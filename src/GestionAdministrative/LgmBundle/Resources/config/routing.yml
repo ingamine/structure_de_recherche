@@ -1,0 +1,3 @@
+lgm_homepage:
+    path:     /
+    defaults: { _controller: LgmBundle:Default:index }
