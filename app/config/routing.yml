@@ -1,0 +1,4 @@
+lgm:
+    resource: "@LgmBundle/Resources/config/routing.yml"
+    prefix:   /
+
