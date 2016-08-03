@@ -1,158 +1,52 @@
 <?php
-
 namespace GestionAdministrative\LgmBundle\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping AS ORM;
 
 /**
- * Habilitation
- *
- * @ORM\Table(name="habilitation")
- * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\HabilitationRepository")
+ * @ORM\Entity
  */
 class Habilitation
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $titre;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="etablissement", type="string", length=255)
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $etablissement;
+    private $datePremiereInscrit;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="directeurHabilitation", type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $directeurHabilitation;
+    private $etablissemnt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="etat", type="string", length=255)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $etat;
-
+    private $coEncadreur;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @ORM\Column(type="string", nullable=true)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $etatThese;
 
     /**
-     * Set titre
-     *
-     * @param string $titre
-     *
-     * @return Habilitation
+     * @ORM\ManyToOne(targetEntity="ChercheursSenior", inversedBy="habilitation")
+     * @ORM\JoinColumn(name="chercheurs_senior_id", referencedColumnName="id")
      */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
+    private $chercheursSenior;
 
     /**
-     * Get titre
-     *
-     * @return string
+     * @ORM\ManyToMany(targetEntity="Soutenance", mappedBy="habilitation")
      */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * Set etablissement
-     *
-     * @param string $etablissement
-     *
-     * @return Habilitation
-     */
-    public function setEtablissement($etablissement)
-    {
-        $this->etablissement = $etablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get etablissement
-     *
-     * @return string
-     */
-    public function getEtablissement()
-    {
-        return $this->etablissement;
-    }
-
-    /**
-     * Set directeurHabilitation
-     *
-     * @param string $directeurHabilitation
-     *
-     * @return Habilitation
-     */
-    public function setDirecteurHabilitation($directeurHabilitation)
-    {
-        $this->directeurHabilitation = $directeurHabilitation;
-
-        return $this;
-    }
-
-    /**
-     * Get directeurHabilitation
-     *
-     * @return string
-     */
-    public function getDirecteurHabilitation()
-    {
-        return $this->directeurHabilitation;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param string $etat
-     *
-     * @return Habilitation
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return string
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
+    private $soutenance;
 }
