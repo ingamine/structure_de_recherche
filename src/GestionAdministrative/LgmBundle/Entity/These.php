@@ -1,52 +1,249 @@
 <?php
+
 namespace GestionAdministrative\LgmBundle\Entity;
-use Doctrine\ORM\Mapping AS ORM;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * These
+ *
+ * @ORM\Table(name="these", indexes={@ORM\Index(name="FKThese16621", columns={"etablissementid"})})
  * @ORM\Entity
  */
 class These
 {
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
-    private $titre;
+    private $title;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @var \DateTime
+     *
+     * @ORM\Column(name="first_date_registered", type="date", nullable=true)
      */
-    private $datePremiereInscrit;
+    private $firstDateRegistered;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="directeur", type="string", length=255, nullable=true)
      */
-    private $etablissemnt;
+    private $directeur;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @var string
+     *
+     * @ORM\Column(name="co_directeur", type="string", length=255, nullable=true)
      */
-    private $coEncadreur;
+    private $coDirecteur;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @var \Etablissement
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etablissementid", referencedColumnName="id")
+     * })
      */
-    private $etatThese;
+    private $etablissementid;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ChercheursSenior", inversedBy="these")
-     * @ORM\JoinColumn(name="chercheurs_senior_id", referencedColumnName="id")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="theseid")
+     * @ORM\JoinTable(name="these_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Theseid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     *   }
+     * )
      */
-    private $chercheursSenior;
+    private $userid;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Soutenance", mappedBy="these")
+     * Constructor
      */
-    private $soutenance;
+    public function __construct()
+    {
+        $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return These
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set firstDateRegistered
+     *
+     * @param \DateTime $firstDateRegistered
+     *
+     * @return These
+     */
+    public function setFirstDateRegistered($firstDateRegistered)
+    {
+        $this->firstDateRegistered = $firstDateRegistered;
+
+        return $this;
+    }
+
+    /**
+     * Get firstDateRegistered
+     *
+     * @return \DateTime
+     */
+    public function getFirstDateRegistered()
+    {
+        return $this->firstDateRegistered;
+    }
+
+    /**
+     * Set directeur
+     *
+     * @param string $directeur
+     *
+     * @return These
+     */
+    public function setDirecteur($directeur)
+    {
+        $this->directeur = $directeur;
+
+        return $this;
+    }
+
+    /**
+     * Get directeur
+     *
+     * @return string
+     */
+    public function getDirecteur()
+    {
+        return $this->directeur;
+    }
+
+    /**
+     * Set coDirecteur
+     *
+     * @param string $coDirecteur
+     *
+     * @return These
+     */
+    public function setCoDirecteur($coDirecteur)
+    {
+        $this->coDirecteur = $coDirecteur;
+
+        return $this;
+    }
+
+    /**
+     * Get coDirecteur
+     *
+     * @return string
+     */
+    public function getCoDirecteur()
+    {
+        return $this->coDirecteur;
+    }
+
+    /**
+     * Set etablissementid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Etablissement $etablissementid
+     *
+     * @return These
+     */
+    public function setEtablissementid(\GestionAdministrative\LgmBundle\Entity\Etablissement $etablissementid = null)
+    {
+        $this->etablissementid = $etablissementid;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissementid
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\Etablissement
+     */
+    public function getEtablissementid()
+    {
+        return $this->etablissementid;
+    }
+
+    /**
+     * Add userid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     *
+     * @return These
+     */
+    public function addUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    {
+        $this->userid[] = $userid;
+
+        return $this;
+    }
+
+    /**
+     * Remove userid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     */
+    public function removeUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    {
+        $this->userid->removeElement($userid);
+    }
+
+    /**
+     * Get userid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
 }

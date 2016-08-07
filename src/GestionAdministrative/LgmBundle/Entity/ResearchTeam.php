@@ -5,12 +5,12 @@ namespace GestionAdministrative\LgmBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Soutenance
+ * ResearchTeam
  *
- * @ORM\Table(name="soutenance")
+ * @ORM\Table(name="research_team")
  * @ORM\Entity
  */
-class Soutenance
+class ResearchTeam
 {
     /**
      * @var integer
@@ -22,33 +22,26 @@ class Soutenance
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_sout", type="date", nullable=true)
-     */
-    private $dateSout;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="mention", type="string", length=255, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    private $mention;
+    private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="jury", type="string", length=255, nullable=true)
+     * @ORM\Column(name="production_index", type="integer", nullable=true)
      */
-    private $jury;
+    private $productionIndex;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="soutenanceid")
-     * @ORM\JoinTable(name="user_soutenance",
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="researchTeamid")
+     * @ORM\JoinTable(name="research_team_user",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="soutenanceid", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="Research_teamid", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
      *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
@@ -77,75 +70,51 @@ class Soutenance
     }
 
     /**
-     * Set dateSout
+     * Set name
      *
-     * @param \DateTime $dateSout
+     * @param string $name
      *
-     * @return Soutenance
+     * @return ResearchTeam
      */
-    public function setDateSout($dateSout)
+    public function setName($name)
     {
-        $this->dateSout = $dateSout;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get dateSout
-     *
-     * @return \DateTime
-     */
-    public function getDateSout()
-    {
-        return $this->dateSout;
-    }
-
-    /**
-     * Set mention
-     *
-     * @param string $mention
-     *
-     * @return Soutenance
-     */
-    public function setMention($mention)
-    {
-        $this->mention = $mention;
-
-        return $this;
-    }
-
-    /**
-     * Get mention
+     * Get name
      *
      * @return string
      */
-    public function getMention()
+    public function getName()
     {
-        return $this->mention;
+        return $this->name;
     }
 
     /**
-     * Set jury
+     * Set productionIndex
      *
-     * @param string $jury
+     * @param integer $productionIndex
      *
-     * @return Soutenance
+     * @return ResearchTeam
      */
-    public function setJury($jury)
+    public function setProductionIndex($productionIndex)
     {
-        $this->jury = $jury;
+        $this->productionIndex = $productionIndex;
 
         return $this;
     }
 
     /**
-     * Get jury
+     * Get productionIndex
      *
-     * @return string
+     * @return integer
      */
-    public function getJury()
+    public function getProductionIndex()
     {
-        return $this->jury;
+        return $this->productionIndex;
     }
 
     /**
@@ -153,7 +122,7 @@ class Soutenance
      *
      * @param \GestionAdministrative\LgmBundle\Entity\User $userid
      *
-     * @return Soutenance
+     * @return ResearchTeam
      */
     public function addUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
     {
