@@ -73,6 +73,7 @@ class Mastere
     public function __construct()
     {
         $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->firstDateRegistered = new \DateTime();
     }
 
 
