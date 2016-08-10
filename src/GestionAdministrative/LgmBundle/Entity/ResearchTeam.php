@@ -34,6 +34,27 @@ class ResearchTeam
      * @ORM\Column(name="production_index", type="integer", nullable=true)
      */
     private $productionIndex;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

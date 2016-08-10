@@ -5,12 +5,12 @@ namespace GestionAdministrative\LgmBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Groupe
+ * Group
  *
- * @ORM\Table(name="groupe")
+ * @ORM\Table(name="group")
  * @ORM\Entity
  */
-class Groupe
+class Group
 {
     /**
      * @var integer
@@ -27,6 +27,27 @@ class Groupe
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
 
 
@@ -45,7 +66,7 @@ class Groupe
      *
      * @param string $name
      *
-     * @return Groupe
+     * @return Group
      */
     public function setName($name)
     {

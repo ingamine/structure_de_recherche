@@ -36,11 +36,32 @@ class Habilitation
     private $firstDateRegistered;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="directeur", type="string", length=255, nullable=true)
+     * @ORM\Column(name="directeur", type="boolean", nullable=true)
      */
     private $directeur;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Etablissement
@@ -73,7 +94,6 @@ class Habilitation
     public function __construct()
     {
         $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->firstDateRegistered = new \DateTime(); 
     }
 
 
@@ -138,7 +158,7 @@ class Habilitation
     /**
      * Set directeur
      *
-     * @param string $directeur
+     * @param boolean $directeur
      *
      * @return Habilitation
      */
@@ -152,7 +172,7 @@ class Habilitation
     /**
      * Get directeur
      *
-     * @return string
+     * @return boolean
      */
     public function getDirecteur()
     {

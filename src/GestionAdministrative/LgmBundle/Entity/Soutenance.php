@@ -41,6 +41,27 @@ class Soutenance
      * @ORM\Column(name="jury", type="string", length=255, nullable=true)
      */
     private $jury;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

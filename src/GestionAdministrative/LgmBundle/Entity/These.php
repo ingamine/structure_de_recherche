@@ -34,20 +34,27 @@ class These
      * @ORM\Column(name="first_date_registered", type="date", nullable=true)
      */
     private $firstDateRegistered;
-
+    
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="directeur", type="string", length=255, nullable=true)
+     * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $directeur;
-
+    private $created_at;
+    
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="co_directeur", type="string", length=255, nullable=true)
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
      */
-    private $coDirecteur;
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Etablissement
@@ -80,7 +87,6 @@ class These
     public function __construct()
     {
         $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->firstDateRegistered = new \DateTime();
     }
 
 
@@ -140,54 +146,6 @@ class These
     public function getFirstDateRegistered()
     {
         return $this->firstDateRegistered;
-    }
-
-    /**
-     * Set directeur
-     *
-     * @param string $directeur
-     *
-     * @return These
-     */
-    public function setDirecteur($directeur)
-    {
-        $this->directeur = $directeur;
-
-        return $this;
-    }
-
-    /**
-     * Get directeur
-     *
-     * @return string
-     */
-    public function getDirecteur()
-    {
-        return $this->directeur;
-    }
-
-    /**
-     * Set coDirecteur
-     *
-     * @param string $coDirecteur
-     *
-     * @return These
-     */
-    public function setCoDirecteur($coDirecteur)
-    {
-        $this->coDirecteur = $coDirecteur;
-
-        return $this;
-    }
-
-    /**
-     * Get coDirecteur
-     *
-     * @return string
-     */
-    public function getCoDirecteur()
-    {
-        return $this->coDirecteur;
     }
 
     /**

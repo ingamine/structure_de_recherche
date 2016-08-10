@@ -29,6 +29,13 @@ class ProductionScientifique
     private $title;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_publication", type="date", nullable=true)
@@ -90,28 +97,41 @@ class ProductionScientifique
      * @ORM\Column(name="index_factor", type="integer", nullable=true)
      */
     private $indexFactor;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="productionScientifiqueid")
-     * @ORM\JoinTable(name="media",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Production_scientifiqueid", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Media", mappedBy="productionScientifiqueid")
      */
-    private $userid;
+    private $mediaid;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mediaid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -147,6 +167,30 @@ class ProductionScientifique
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     *
+     * @return ProductionScientifique
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -366,36 +410,36 @@ class ProductionScientifique
     }
 
     /**
-     * Add userid
+     * Add mediaid
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     * @param \GestionAdministrative\LgmBundle\Entity\Media $mediaid
      *
      * @return ProductionScientifique
      */
-    public function addUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    public function addMediaid(\GestionAdministrative\LgmBundle\Entity\Media $mediaid)
     {
-        $this->userid[] = $userid;
+        $this->mediaid[] = $mediaid;
 
         return $this;
     }
 
     /**
-     * Remove userid
+     * Remove mediaid
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     * @param \GestionAdministrative\LgmBundle\Entity\Media $mediaid
      */
-    public function removeUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    public function removeMediaid(\GestionAdministrative\LgmBundle\Entity\Media $mediaid)
     {
-        $this->userid->removeElement($userid);
+        $this->mediaid->removeElement($mediaid);
     }
 
     /**
-     * Get userid
+     * Get mediaid
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUserid()
+    public function getMediaid()
     {
-        return $this->userid;
+        return $this->mediaid;
     }
 }

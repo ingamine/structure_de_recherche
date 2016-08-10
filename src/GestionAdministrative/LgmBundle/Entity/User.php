@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user", indexes={@ORM\Index(name="FKUser934142", columns={"Groupeid"}), @ORM\Index(name="FKUser512253", columns={"structureid"})})
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="FKUser738024", columns={"Groupeid"}), @ORM\Index(name="FKUser512253", columns={"structureid"})})
  * @ORM\Entity
  */
 class User
@@ -85,32 +85,67 @@ class User
     private $profile;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="groupe", type="integer", nullable=true)
+     * @ORM\Column(name="document_id", type="string", length=255, nullable=true)
      */
-    private $groupe;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="media", type="integer", nullable=true)
-     */
-    private $media;
+    private $documentId;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="document", type="string", length=255, nullable=true)
+     * @ORM\Column(name="photo_id", type="string", length=255, nullable=true)
      */
-    private $document;
+    private $photoId;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="directeur", type="boolean", nullable=true)
      */
-    private $photo;
+    private $directeur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="co_directeur", type="boolean", nullable=true)
+     */
+    private $coDirecteur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="effectue", type="boolean", nullable=true)
+     */
+    private $effectue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="media_id", type="integer", nullable=true)
+     */
+    private $mediaId;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Structure
@@ -123,9 +158,9 @@ class User
     private $structureid;
 
     /**
-     * @var \Groupe
+     * @var \Group
      *
-     * @ORM\ManyToOne(targetEntity="Groupe")
+     * @ORM\ManyToOne(targetEntity="Group")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Groupeid", referencedColumnName="id")
      * })
@@ -145,13 +180,6 @@ class User
      * @ORM\ManyToMany(targetEntity="Mastere", mappedBy="userid")
      */
     private $mastereid;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="ProductionScientifique", mappedBy="userid")
-     */
-    private $productionScientifiqueid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -181,7 +209,6 @@ class User
     {
         $this->habilitationid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->mastereid = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productionScientifiqueid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->researchTeamid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->theseid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->soutenanceid = new \Doctrine\Common\Collections\ArrayCollection();
@@ -415,99 +442,147 @@ class User
     }
 
     /**
-     * Set groupe
+     * Set documentId
      *
-     * @param integer $groupe
+     * @param string $documentId
      *
      * @return User
      */
-    public function setGroupe($groupe)
+    public function setDocumentId($documentId)
     {
-        $this->groupe = $groupe;
+        $this->documentId = $documentId;
 
         return $this;
     }
 
     /**
-     * Get groupe
-     *
-     * @return integer
-     */
-    public function getGroupe()
-    {
-        return $this->groupe;
-    }
-
-    /**
-     * Set media
-     *
-     * @param integer $media
-     *
-     * @return User
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
-
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return integer
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * Set document
-     *
-     * @param string $document
-     *
-     * @return User
-     */
-    public function setDocument($document)
-    {
-        $this->document = $document;
-
-        return $this;
-    }
-
-    /**
-     * Get document
+     * Get documentId
      *
      * @return string
      */
-    public function getDocument()
+    public function getDocumentId()
     {
-        return $this->document;
+        return $this->documentId;
     }
 
     /**
-     * Set photo
+     * Set photoId
      *
-     * @param string $photo
+     * @param string $photoId
      *
      * @return User
      */
-    public function setPhoto($photo)
+    public function setPhotoId($photoId)
     {
-        $this->photo = $photo;
+        $this->photoId = $photoId;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get photoId
      *
      * @return string
      */
-    public function getPhoto()
+    public function getPhotoId()
     {
-        return $this->photo;
+        return $this->photoId;
+    }
+
+    /**
+     * Set directeur
+     *
+     * @param boolean $directeur
+     *
+     * @return User
+     */
+    public function setDirecteur($directeur)
+    {
+        $this->directeur = $directeur;
+
+        return $this;
+    }
+
+    /**
+     * Get directeur
+     *
+     * @return boolean
+     */
+    public function getDirecteur()
+    {
+        return $this->directeur;
+    }
+
+    /**
+     * Set coDirecteur
+     *
+     * @param boolean $coDirecteur
+     *
+     * @return User
+     */
+    public function setCoDirecteur($coDirecteur)
+    {
+        $this->coDirecteur = $coDirecteur;
+
+        return $this;
+    }
+
+    /**
+     * Get coDirecteur
+     *
+     * @return boolean
+     */
+    public function getCoDirecteur()
+    {
+        return $this->coDirecteur;
+    }
+
+    /**
+     * Set effectue
+     *
+     * @param boolean $effectue
+     *
+     * @return User
+     */
+    public function setEffectue($effectue)
+    {
+        $this->effectue = $effectue;
+
+        return $this;
+    }
+
+    /**
+     * Get effectue
+     *
+     * @return boolean
+     */
+    public function getEffectue()
+    {
+        return $this->effectue;
+    }
+
+    /**
+     * Set mediaId
+     *
+     * @param integer $mediaId
+     *
+     * @return User
+     */
+    public function setMediaId($mediaId)
+    {
+        $this->mediaId = $mediaId;
+
+        return $this;
+    }
+
+    /**
+     * Get mediaId
+     *
+     * @return integer
+     */
+    public function getMediaId()
+    {
+        return $this->mediaId;
     }
 
     /**
@@ -537,11 +612,11 @@ class User
     /**
      * Set groupeid
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\Groupe $groupeid
+     * @param \GestionAdministrative\LgmBundle\Entity\Group $groupeid
      *
      * @return User
      */
-    public function setGroupeid(\GestionAdministrative\LgmBundle\Entity\Groupe $groupeid = null)
+    public function setGroupeid(\GestionAdministrative\LgmBundle\Entity\Group $groupeid = null)
     {
         $this->groupeid = $groupeid;
 
@@ -551,7 +626,7 @@ class User
     /**
      * Get groupeid
      *
-     * @return \GestionAdministrative\LgmBundle\Entity\Groupe
+     * @return \GestionAdministrative\LgmBundle\Entity\Group
      */
     public function getGroupeid()
     {
@@ -624,40 +699,6 @@ class User
     public function getMastereid()
     {
         return $this->mastereid;
-    }
-
-    /**
-     * Add productionScientifiqueid
-     *
-     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid
-     *
-     * @return User
-     */
-    public function addProductionScientifiqueid(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid)
-    {
-        $this->productionScientifiqueid[] = $productionScientifiqueid;
-
-        return $this;
-    }
-
-    /**
-     * Remove productionScientifiqueid
-     *
-     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid
-     */
-    public function removeProductionScientifiqueid(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid)
-    {
-        $this->productionScientifiqueid->removeElement($productionScientifiqueid);
-    }
-
-    /**
-     * Get productionScientifiqueid
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProductionScientifiqueid()
-    {
-        return $this->productionScientifiqueid;
     }
 
     /**

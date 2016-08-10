@@ -69,13 +69,27 @@ class Structure
      * @ORM\Column(name="date_creation", type="date", nullable=true)
      */
     private $dateCreation;
-
+    
     /**
      * @var integer
      *
-     * @ORM\Column(name="etablissement id", type="integer", nullable=false)
+     * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $etablissementId;
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
     /**
      * @var \Etablissement
@@ -268,26 +282,26 @@ class Structure
     }
 
     /**
-     * Set etablissementId
+     * Set etablissementid
      *
-     * @param integer $etablissementId
+     * @param \GestionAdministrative\LgmBundle\Entity\Etablissement $etablissementid
      *
      * @return Structure
      */
-    public function setEtablissementId($etablissementId)
+    public function setEtablissementid(\GestionAdministrative\LgmBundle\Entity\Etablissement $etablissementid = null)
     {
-        $this->etablissementId = $etablissementId;
+        $this->etablissementid = $etablissementid;
 
         return $this;
     }
 
     /**
-     * Get etablissementId
+     * Get etablissementid
      *
-     * @return integer
+     * @return \GestionAdministrative\LgmBundle\Entity\Etablissement
      */
-    public function getEtablissementId()
+    public function getEtablissementid()
     {
-        return $this->etablissementId;
+        return $this->etablissementid;
     }
 }

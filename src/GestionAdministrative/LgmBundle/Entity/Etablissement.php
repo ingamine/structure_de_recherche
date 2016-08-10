@@ -27,13 +27,27 @@ class Etablissement
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
-
+    
     /**
      * @var integer
      *
-     * @ORM\Column(name="production_index", type="integer", nullable=true)
+     * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $productionIndex;
+    private $created_at;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     */
+    private $updated_at ;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deleted_at;
 
 
 
@@ -69,29 +83,5 @@ class Etablissement
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set productionIndex
-     *
-     * @param integer $productionIndex
-     *
-     * @return Etablissement
-     */
-    public function setProductionIndex($productionIndex)
-    {
-        $this->productionIndex = $productionIndex;
-
-        return $this;
-    }
-
-    /**
-     * Get productionIndex
-     *
-     * @return integer
-     */
-    public function getProductionIndex()
-    {
-        return $this->productionIndex;
     }
 }
