@@ -15,7 +15,7 @@ class ProductionScientifique
     const TYPE_ARTICLE = 1;
     const TYPE_COMMUNICATION = 2;
     const TYPE_OUVRAGE = 3;
-
+    
     /**
      * @var integer
      *
@@ -101,27 +101,27 @@ class ProductionScientifique
      * @ORM\Column(name="index_factor", type="integer", nullable=true)
      */
     private $indexFactor;
-    
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $created_at;
-    
+    private $createdAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
      */
-    private $updated_at ;
-    
+    private $updatedAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="deleted_at", type="date", nullable=false)
      */
-    private $deleted_at;
+    private $deletedAt;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -131,11 +131,27 @@ class ProductionScientifique
     private $mediaid;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="productionScientifiqueid")
+     * @ORM\JoinTable(name="production_scientifique_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Production_scientifiqueid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     *   }
+     * )
+     */
+    private $userid;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->mediaid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -414,6 +430,78 @@ class ProductionScientifique
     }
 
     /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return ProductionScientifique
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return ProductionScientifique
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return ProductionScientifique
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
      * Add mediaid
      *
      * @param \GestionAdministrative\LgmBundle\Entity\Media $mediaid
@@ -445,5 +533,39 @@ class ProductionScientifique
     public function getMediaid()
     {
         return $this->mediaid;
+    }
+
+    /**
+     * Add userid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     *
+     * @return ProductionScientifique
+     */
+    public function addUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    {
+        $this->userid[] = $userid;
+
+        return $this;
+    }
+
+    /**
+     * Remove userid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $userid
+     */
+    public function removeUserid(\GestionAdministrative\LgmBundle\Entity\User $userid)
+    {
+        $this->userid->removeElement($userid);
+    }
+
+    /**
+     * Get userid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUserid()
+    {
+        return $this->userid;
     }
 }

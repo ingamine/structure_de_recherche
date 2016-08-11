@@ -41,27 +41,27 @@ class Habilitation
      * @ORM\Column(name="directeur", type="boolean", nullable=true)
      */
     private $directeur;
-    
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $created_at;
-    
+    private $createdAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
      */
-    private $updated_at ;
-    
+    private $updatedAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="deleted_at", type="date", nullable=false)
      */
-    private $deleted_at;
+    private $deletedAt;
 
     /**
      * @var \Etablissement
@@ -177,6 +177,78 @@ class Habilitation
     public function getDirecteur()
     {
         return $this->directeur;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Habilitation
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Habilitation
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return Habilitation
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 
     /**

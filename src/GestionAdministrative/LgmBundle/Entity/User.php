@@ -125,27 +125,27 @@ class User
      * @ORM\Column(name="media_id", type="integer", nullable=true)
      */
     private $mediaId;
-    
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="date", nullable=false)
      */
-    private $created_at;
-    
+    private $createdAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="updated_at ", type="date", nullable=false)
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
      */
-    private $updated_at ;
-    
+    private $updatedAt;
+
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="deleted_at", type="date", nullable=false)
      */
-    private $deleted_at;
+    private $deletedAt;
 
     /**
      * @var \Structure
@@ -184,6 +184,13 @@ class User
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="ProductionScientifique", mappedBy="userid")
+     */
+    private $productionScientifiqueid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="ResearchTeam", mappedBy="userid")
      */
     private $researchTeamid;
@@ -209,6 +216,7 @@ class User
     {
         $this->habilitationid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->mastereid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productionScientifiqueid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->researchTeamid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->theseid = new \Doctrine\Common\Collections\ArrayCollection();
         $this->soutenanceid = new \Doctrine\Common\Collections\ArrayCollection();
@@ -586,6 +594,78 @@ class User
     }
 
     /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return User
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return User
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
      * Set structureid
      *
      * @param \GestionAdministrative\LgmBundle\Entity\Structure $structureid
@@ -699,6 +779,40 @@ class User
     public function getMastereid()
     {
         return $this->mastereid;
+    }
+
+    /**
+     * Add productionScientifiqueid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid
+     *
+     * @return User
+     */
+    public function addProductionScientifiqueid(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid)
+    {
+        $this->productionScientifiqueid[] = $productionScientifiqueid;
+
+        return $this;
+    }
+
+    /**
+     * Remove productionScientifiqueid
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid
+     */
+    public function removeProductionScientifiqueid(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionScientifiqueid)
+    {
+        $this->productionScientifiqueid->removeElement($productionScientifiqueid);
+    }
+
+    /**
+     * Get productionScientifiqueid
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductionScientifiqueid()
+    {
+        return $this->productionScientifiqueid;
     }
 
     /**
