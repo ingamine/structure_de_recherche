@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ProductionScientifique
 {
+    const TYPE_ARTICLE = 1;
+    const TYPE_COMMUNICATION = 2;
+    const TYPE_OUVRAGE = 3;
+
     /**
      * @var integer
      *
