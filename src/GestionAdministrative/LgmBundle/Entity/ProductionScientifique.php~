@@ -1,0 +1,158 @@
+<?php
+
+namespace GestionAdministrative\LgmBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProductionScientifique
+ *
+ * @ORM\Table(name="production_scientifique")
+ * @ORM\Entity
+ */
+class ProductionScientifique
+{
+    const TYPE_ARTICLE = 1;
+    const TYPE_COMMUNICATION = 2;
+    const TYPE_OUVRAGE = 3;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type", type="integer", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_publication", type="date", nullable=true)
+     */
+    private $datePublication;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="auteur", type="string", length=255, nullable=true)
+     */
+    private $auteur;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_auteur", type="integer", nullable=false)
+     */
+    private $nbAuteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_journal", type="string", length=255, nullable=true)
+     */
+    private $nomJournal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_congres", type="string", length=255, nullable=true)
+     */
+    private $nomCongres;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="edition", type="string", length=255, nullable=true)
+     */
+    private $edition;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isbn", type="string", length=255, nullable=true)
+     */
+    private $isbn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="indexe", type="string", length=255, nullable=true)
+     */
+    private $indexe;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="index_factor", type="integer", nullable=true)
+     */
+    private $indexFactor;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Media", mappedBy="productionScientifiqueid")
+     */
+    private $mediaid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="productionScientifiqueid")
+     * @ORM\JoinTable(name="production_scientifique_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Production_scientifiqueid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     *   }
+     * )
+     */
+    private $userid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->mediaid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+
