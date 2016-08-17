@@ -1,0 +1,24 @@
+soutenance_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Soutenance:index" }
+    methods:  GET
+
+soutenance_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Soutenance:show" }
+    methods:  GET
+
+soutenance_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Soutenance:new" }
+    methods:  [GET, POST]
+
+soutenance_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Soutenance:edit" }
+    methods:  [GET, POST]
+
+soutenance_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Soutenance:delete" }
+    methods:  DELETE

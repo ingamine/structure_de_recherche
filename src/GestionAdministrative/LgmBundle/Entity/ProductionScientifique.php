@@ -3,12 +3,15 @@
 namespace GestionAdministrative\LgmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
  * ProductionScientifique
  *
  * @ORM\Table(name="production_scientifique")
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class ProductionScientifique
 {
@@ -102,24 +105,20 @@ class ProductionScientifique
      */
     private $indexFactor;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="date", nullable=false)
+      /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private $created;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
-    private $updatedAt;
-
+    private $updated;
+    
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
 
@@ -429,76 +428,35 @@ class ProductionScientifique
         return $this->indexFactor;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return ProductionScientifique
-     */
-    public function setCreatedAt($createdAt)
+    public function getCreated()
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        return $this->created;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdated()
     {
-        return $this->createdAt;
+        return $this->updated;
     }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return ProductionScientifique
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
+    
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
-     *
-     * @return ProductionScientifique
+     * @param string $deletedAt
+     * @return Groupes
      */
     public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
-
         return $this;
     }
 
     /**
-     * Get deletedAt
-     *
-     * @return \DateTime
+     * toString
+     * @return string
      */
-    public function getDeletedAt()
+    public function __toString()
     {
-        return $this->deletedAt;
+        return $this->getName();
     }
 
     /**

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Habilitation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ habilitation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ habilitation.title }}</td>
+            </tr>
+            <tr>
+                <th>Firstdateregistered</th>
+                <td>{% if habilitation.firstDateRegistered %}{{ habilitation.firstDateRegistered|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Directeur</th>
+                <td>{% if habilitation.directeur %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if habilitation.created %}{{ habilitation.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if habilitation.updated %}{{ habilitation.updated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('habilitation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('habilitation_edit', { 'id': habilitation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

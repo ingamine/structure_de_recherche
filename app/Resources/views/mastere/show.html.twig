@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mastere</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mastere.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ mastere.title }}</td>
+            </tr>
+            <tr>
+                <th>Firstdateregistered</th>
+                <td>{{ mastere.firstDateRegistered|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if mastere.created %}{{ mastere.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if mastere.updated %}{{ mastere.updated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mastere_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('mastere_edit', { 'id': mastere.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

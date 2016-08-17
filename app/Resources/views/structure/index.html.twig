@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Structure list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Nomchef</th>
+                <th>Prenomchef</th>
+                <th>Cinchef</th>
+                <th>Universite</th>
+                <th>Website</th>
+                <th>Datecreation</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for structure in structures %}
+            <tr>
+                <td><a href="{{ path('structure_show', { 'id': structure.id }) }}">{{ structure.id }}</a></td>
+                <td>{{ structure.name }}</td>
+                <td>{{ structure.nomChef }}</td>
+                <td>{{ structure.prenomChef }}</td>
+                <td>{{ structure.cinChef }}</td>
+                <td>{{ structure.universite }}</td>
+                <td>{{ structure.webSite }}</td>
+                <td>{% if structure.dateCreation %}{{ structure.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if structure.created %}{{ structure.created|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if structure.updated %}{{ structure.updated|date('Y-m-d') }}{% endif %}</td>
+               
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('structure_show', { 'id': structure.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('structure_edit', { 'id': structure.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('structure_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

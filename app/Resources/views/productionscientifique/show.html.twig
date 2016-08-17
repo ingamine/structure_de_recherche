@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProductionScientifique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ productionScientifique.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ productionScientifique.title }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ productionScientifique.type }}</td>
+            </tr>
+            <tr>
+                <th>Datepublication</th>
+                <td>{% if productionScientifique.datePublication %}{{ productionScientifique.datePublication|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ productionScientifique.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Nbauteur</th>
+                <td>{{ productionScientifique.nbAuteur }}</td>
+            </tr>
+            <tr>
+                <th>Nomjournal</th>
+                <td>{{ productionScientifique.nomJournal }}</td>
+            </tr>
+            <tr>
+                <th>Nomcongres</th>
+                <td>{{ productionScientifique.nomCongres }}</td>
+            </tr>
+            <tr>
+                <th>Edition</th>
+                <td>{{ productionScientifique.edition }}</td>
+            </tr>
+            <tr>
+                <th>Isbn</th>
+                <td>{{ productionScientifique.isbn }}</td>
+            </tr>
+            <tr>
+                <th>Indexe</th>
+                <td>{{ productionScientifique.indexe }}</td>
+            </tr>
+            <tr>
+                <th>Indexfactor</th>
+                <td>{{ productionScientifique.indexFactor }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if productionScientifique.created %}{{ productionScientifique.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if productionScientifique.updated %}{{ productionScientifique.updated|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productionscientifique_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('productionscientifique_edit', { 'id': productionScientifique.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

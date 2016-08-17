@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ResearchTeam list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Productionindex</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+               
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for researchTeam in researchTeams %}
+            <tr>
+                <td><a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">{{ researchTeam.id }}</a></td>
+                <td>{{ researchTeam.name }}</td>
+                <td>{{ researchTeam.productionIndex }}</td>
+                <td>{% if researchTeam.created %}{{ researchTeam.created|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if researchTeam.updated %}{{ researchTeam.updated|date('Y-m-d') }}{% endif %}</td>
+                
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('researchteam_edit', { 'id': researchTeam.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('researchteam_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

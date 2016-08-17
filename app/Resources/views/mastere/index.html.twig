@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Mastere list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Firstdateregistered</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+               
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mastere in masteres %}
+            <tr>
+                <td><a href="{{ path('mastere_show', { 'id': mastere.id }) }}">{{ mastere.id }}</a></td>
+                <td>{{ mastere.title }}</td>
+                <td>{{ mastere.firstDateRegistered|date('d-m-Y') }}</td>
+                <td>{% if mastere.created %}{{ mastere.created|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if mastere.updated %}{{ mastere.updated|date('Y-m-d') }}{% endif %}</td>
+                
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('mastere_show', { 'id': mastere.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mastere_edit', { 'id': mastere.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mastere_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

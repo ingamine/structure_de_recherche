@@ -3,13 +3,17 @@
 namespace GestionAdministrative\LgmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 /**
  * User
  *
- * @ORM\Table(name="user", indexes={@ORM\Index(name="FKUser738024", columns={"Groupeid"}), @ORM\Index(name="FKUser512253", columns={"structureid"})})
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="FKUser738024", columns={"Groupesid"}), @ORM\Index(name="FKUser512253", columns={"structureid"})})
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
+
+
 class User
 {
     /**
@@ -29,9 +33,9 @@ class User
     private $name;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="last_name", type="integer", nullable=true)
+     * @ORM\Column(name="last_name", type="string", nullable=true)
      */
     private $lastName;
 
@@ -43,9 +47,9 @@ class User
     private $gender;
 
     /**
-     * @var \DateTime
+     * @var string $birthday
      *
-     * @ORM\Column(name="birthday", type="date", nullable=true)
+     * @ORM\Column(name="birthday", type="datetime", nullable=true)
      */
     private $birthday;
 
@@ -127,26 +131,21 @@ class User
     private $mediaId;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="date", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private $created;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
-    private $updatedAt;
+    private $updated;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
-
     /**
      * @var \Structure
      *
@@ -158,14 +157,14 @@ class User
     private $structureid;
 
     /**
-     * @var \Group
+     * @var \Groupes
      *
-     * @ORM\ManyToOne(targetEntity="Group")
+     * @ORM\ManyToOne(targetEntity="Groupes")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Groupeid", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="Groupesid", referencedColumnName="id")
      * })
      */
-    private $groupeid;
+    private $groupesid;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -593,78 +592,28 @@ class User
         return $this->mediaId;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return User
-     */
-    public function setCreatedAt($createdAt)
+    public function getCreated()
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        return $this->created;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdated()
     {
-        return $this->createdAt;
+        return $this->updated;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return User
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
 
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
-     *
+     * @param string $deletedAt
      * @return User
      */
     public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
-
         return $this;
     }
-
-    /**
-     * Get deletedAt
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->deletedAt;
-    }
-
     /**
      * Set structureid
      *
@@ -690,27 +639,27 @@ class User
     }
 
     /**
-     * Set groupeid
+     * Set groupesid
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\Group $groupeid
+     * @param \GestionAdministrative\LgmBundle\Entity\Groupes $groupesid
      *
      * @return User
      */
-    public function setGroupeid(\GestionAdministrative\LgmBundle\Entity\Group $groupeid = null)
+    public function setGroupesid(\GestionAdministrative\LgmBundle\Entity\Groupes $groupesid = null)
     {
-        $this->groupeid = $groupeid;
+        $this->groupesid = $groupesid;
 
         return $this;
     }
 
     /**
-     * Get groupeid
+     * Get groupesid
      *
-     * @return \GestionAdministrative\LgmBundle\Entity\Group
+     * @return \GestionAdministrative\LgmBundle\Entity\Groupes
      */
-    public function getGroupeid()
+    public function getGroupesid()
     {
-        return $this->groupeid;
+        return $this->groupesid;
     }
 
     /**
@@ -916,4 +865,15 @@ class User
     {
         return $this->soutenanceid;
     }
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+
 }

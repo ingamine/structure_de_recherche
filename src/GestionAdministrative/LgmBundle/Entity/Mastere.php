@@ -3,12 +3,15 @@
 namespace GestionAdministrative\LgmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
 /**
  * Mastere
  *
  * @ORM\Table(name="mastere", indexes={@ORM\Index(name="FKMastere631585", columns={"etablissementid"})})
  * @ORM\Entity
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Mastere
 {
@@ -28,31 +31,27 @@ class Mastere
      */
     private $title;
 
-    /**
-     * @var string
+     /**
+     * @var \DateTime
      *
-     * @ORM\Column(name="first_date_registered", type="string", length=255, nullable=true)
+     * @ORM\Column(name="first_date_registered", type="date", nullable=true)
      */
     private $firstDateRegistered;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="date", nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
      */
-    private $createdAt;
+    private $created;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
-    private $updatedAt;
-
+    private $updated;
+    
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
 
@@ -148,76 +147,35 @@ class Mastere
         return $this->firstDateRegistered;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Mastere
-     */
-    public function setCreatedAt($createdAt)
+    public function getCreated()
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        return $this->created;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdated()
     {
-        return $this->createdAt;
+        return $this->updated;
     }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Mastere
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
+    
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
-     *
+     * @param string $deletedAt
      * @return Mastere
      */
     public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
-
         return $this;
     }
 
     /**
-     * Get deletedAt
-     *
-     * @return \DateTime
+     * toString
+     * @return string
      */
-    public function getDeletedAt()
+    public function __toString()
     {
-        return $this->deletedAt;
+        return $this->getName();
     }
 
     /**
