@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Soutenance list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datesout</th>
+                <th>Mention</th>
+                <th>Jury</th>
+                <th>Created</th>
+                <th>Updated</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for soutenance in soutenances %}
+            <tr>
+                <td><a href="{{ path('soutenance_show', { 'id': soutenance.id }) }}">{{ soutenance.id }}</a></td>
+                <td>{% if soutenance.dateSout %}{{ soutenance.dateSout|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ soutenance.mention }}</td>
+                <td>{{ soutenance.jury }}</td>
+                <td>{% if soutenance.created %}{{ soutenance.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if soutenance.updated %}{{ soutenance.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+               
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('soutenance_show', { 'id': soutenance.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('soutenance_edit', { 'id': soutenance.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('soutenance_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

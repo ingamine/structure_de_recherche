@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ProductionScientifique list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Datepublication</th>
+                <th>Auteur</th>
+                <th>Nbauteur</th>
+                <th>Nomjournal</th>
+                <th>Nomcongres</th>
+                <th>Edition</th>
+                <th>Isbn</th>
+                <th>Indexe</th>
+                <th>Indexfactor</th>
+                <th>Created</th>
+                <th>Updated</th>
+             
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productionScientifique in productionScientifiques %}
+            <tr>
+                <td><a href="{{ path('productionscientifique_show', { 'id': productionScientifique.id }) }}">{{ productionScientifique.id }}</a></td>
+                <td>{{ productionScientifique.title }}</td>
+                <td>{{ productionScientifique.type }}</td>
+                <td>{% if productionScientifique.datePublication %}{{ productionScientifique.datePublication|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ productionScientifique.auteur }}</td>
+                <td>{{ productionScientifique.nbAuteur }}</td>
+                <td>{{ productionScientifique.nomJournal }}</td>
+                <td>{{ productionScientifique.nomCongres }}</td>
+                <td>{{ productionScientifique.edition }}</td>
+                <td>{{ productionScientifique.isbn }}</td>
+                <td>{{ productionScientifique.indexe }}</td>
+                <td>{{ productionScientifique.indexFactor }}</td>
+                <td>{% if productionScientifique.created %}{{ productionScientifique.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if productionScientifique.updated %}{{ productionScientifique.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('productionscientifique_show', { 'id': productionScientifique.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('productionscientifique_edit', { 'id': productionScientifique.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('productionscientifique_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+structure_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Structure:index" }
+    methods:  GET
+
+structure_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Structure:show" }
+    methods:  GET
+
+structure_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Structure:new" }
+    methods:  [GET, POST]
+
+structure_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Structure:edit" }
+    methods:  [GET, POST]
+
+structure_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Structure:delete" }
+    methods:  DELETE

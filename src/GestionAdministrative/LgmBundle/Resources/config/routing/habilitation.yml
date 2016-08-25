@@ -1,0 +1,24 @@
+habilitation_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Habilitation:index" }
+    methods:  GET
+
+habilitation_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Habilitation:show" }
+    methods:  GET
+
+habilitation_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Habilitation:new" }
+    methods:  [GET, POST]
+
+habilitation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Habilitation:edit" }
+    methods:  [GET, POST]
+
+habilitation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Habilitation:delete" }
+    methods:  DELETE

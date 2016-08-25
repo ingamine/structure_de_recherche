@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Habilitation list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Firstdateregistered</th>
+                <th>Directeur</th>
+                <th>Created</th>
+                <th>Updated</th>
+               
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for habilitation in habilitations %}
+            <tr>
+                <td><a href="{{ path('habilitation_show', { 'id': habilitation.id }) }}">{{ habilitation.id }}</a></td>
+                <td>{{ habilitation.title }}</td>
+                <td>{% if habilitation.firstDateRegistered %}{{ habilitation.firstDateRegistered|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ habilitation.directeur }}</td>
+                <td>{% if habilitation.created %}{{ habilitation.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if habilitation.updated %}{{ habilitation.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+             
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('habilitation_show', { 'id': habilitation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('habilitation_edit', { 'id': habilitation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('habilitation_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Structure</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ structure.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ structure.name }}</td>
+            </tr>
+            <tr>
+                <th>Nomchef</th>
+                <td>{{ structure.nomChef }}</td>
+            </tr>
+            <tr>
+                <th>Prenomchef</th>
+                <td>{{ structure.prenomChef }}</td>
+            </tr>
+            <tr>
+                <th>Cinchef</th>
+                <td>{{ structure.cinChef }}</td>
+            </tr>
+            <tr>
+                <th>Universite</th>
+                <td>{{ structure.universite }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ structure.webSite }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if structure.dateCreation %}{{ structure.dateCreation|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if structure.created %}{{ structure.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if structure.updated %}{{ structure.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('structure_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('structure_edit', { 'id': structure.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

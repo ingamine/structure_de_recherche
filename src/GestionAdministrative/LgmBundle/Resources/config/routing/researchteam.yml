@@ -1,0 +1,24 @@
+researchteam_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:ResearchTeam:index" }
+    methods:  GET
+
+researchteam_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:ResearchTeam:show" }
+    methods:  GET
+
+researchteam_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:ResearchTeam:new" }
+    methods:  [GET, POST]
+
+researchteam_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:ResearchTeam:edit" }
+    methods:  [GET, POST]
+
+researchteam_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:ResearchTeam:delete" }
+    methods:  DELETE

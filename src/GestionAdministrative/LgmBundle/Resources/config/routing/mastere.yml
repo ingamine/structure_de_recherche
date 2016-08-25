@@ -1,0 +1,24 @@
+mastere_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Mastere:index" }
+    methods:  GET
+
+mastere_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Mastere:show" }
+    methods:  GET
+
+mastere_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Mastere:new" }
+    methods:  [GET, POST]
+
+mastere_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Mastere:edit" }
+    methods:  [GET, POST]
+
+mastere_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Mastere:delete" }
+    methods:  DELETE

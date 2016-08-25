@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Soutenance</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ soutenance.id }}</td>
+            </tr>
+            <tr>
+                <th>Datesout</th>
+                <td>{% if soutenance.dateSout %}{{ soutenance.dateSout|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mention</th>
+                <td>{{ soutenance.mention }}</td>
+            </tr>
+            <tr>
+                <th>Jury</th>
+                <td>{{ soutenance.jury }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if soutenance.created %}{{ soutenance.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if soutenance.updated %}{{ soutenance.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('soutenance_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('soutenance_edit', { 'id': soutenance.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

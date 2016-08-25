@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Media list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Filename</th>
+                <th>Path</th>
+                <th>Created</th>
+                <th>Updated</th>
+              
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medium in media %}
+            <tr>
+                <td><a href="{{ path('media_show', { 'id': medium.id }) }}">{{ medium.id }}</a></td>
+                <td>{{ medium.fileName }}</td>
+                <td>{{ medium.path }}</td>
+                <td>{% if medium.created %}{{ medium.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if medium.updated %}{{ medium.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+               
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('media_show', { 'id': medium.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('media_edit', { 'id': medium.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('media_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

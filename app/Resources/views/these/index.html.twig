@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>These list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Firstdateregistered</th>
+                <th>Updated</th>
+              
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for these in theses %}
+            <tr>
+                <td><a href="{{ path('these_show', { 'id': these.id }) }}">{{ these.id }}</a></td>
+                <td>{{ these.title }}</td>
+                <td>{% if these.firstDateRegistered %}{{ these.firstDateRegistered|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if these.updated %}{{ these.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+               
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('these_show', { 'id': these.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('these_edit', { 'id': these.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('these_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

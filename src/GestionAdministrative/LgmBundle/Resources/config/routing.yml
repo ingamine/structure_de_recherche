@@ -1,0 +1,33 @@
+lgm_user:
+        resource: "@LgmBundle/Resources/config/routing/user.yml"
+        prefix:   /user
+lgm_etablissement:
+        resource: "@LgmBundle/Resources/config/routing/etablissement.yml"
+        prefix:   /etablissement
+lgm_habilitation:
+        resource: "@LgmBundle/Resources/config/routing/habilitation.yml"
+        prefix:   /habilitation
+lgm_mastere:
+        resource: "@LgmBundle/Resources/config/routing/mastere.yml"
+        prefix:   /mastere
+lgm_media:
+        resource: "@LgmBundle/Resources/config/routing/media.yml"
+        prefix:   /media
+lgm_productionscientifique:
+        resource: "@LgmBundle/Resources/config/routing/productionscientifique.yml"
+        prefix:   /productionscientifique
+lgm_researchteam:
+        resource: "@LgmBundle/Resources/config/routing/researchteam.yml"
+        prefix:   /researchteam
+lgm_soutenance:
+        resource: "@LgmBundle/Resources/config/routing/soutenance.yml"
+        prefix:   /soutenance
+lgm_structure:
+        resource: "@LgmBundle/Resources/config/routing/structure.yml"
+        prefix:   /structure
+lgm_these:
+        resource: "@LgmBundle/Resources/config/routing/these.yml"
+        prefix:   /these
+lgm_homepage:
+    path:     /
+    defaults: { _controller: LgmBundle:Default:index }
