@@ -212,10 +212,11 @@ class Habilitation
      * toString
      * @return string
      */
-    public function __toString()
+     public function __toString()
     {
-        return $this->getName();
+        return strval($this->id);
     }
+
 
     /**
      * Set created

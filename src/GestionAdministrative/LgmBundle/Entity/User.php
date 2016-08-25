@@ -584,13 +584,9 @@ class User
     }
 
  
-    /**
-     * toString
-     * @return string
-    */
-    public function __toString()
+     public function __toString()
     {
-        return $this->getName();
+        return strval($this->id);
     }
 
    
@@ -602,28 +598,16 @@ class User
         $this->habilitations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add habilitation
-     *
-     * @param \GestionsAdministrative\LgmBundle\Entity\Habilitation $habilitation
-     * @return User
-     */
-    public function addHabilitation(\GestionsAdministrative\LgmBundle\Entity\Habilitation $habilitation)
-    {
-        $this->habilitation[] = $habilitation;
+    
+    
+    
+    
+    
+    
+    
+    
 
-        return $this;
-    }
-
-    /**
-     * Remove habilitation
-     *
-     * @param \GestionsAdministrative\LgmBundle\Entity\Habilitation $habilitation
-     */
-    public function removeHabilitation(\GestionsAdministrative\LgmBundle\Entity\Habilitation $habilitation)
-    {
-        $this->habilitation->removeElement($habilitation);
-    }
+   
 
     /**
      * Get habilitation
@@ -861,4 +845,27 @@ class User
     }
 
   
+
+    /**
+     * Add habilitation
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Habilitation $habilitation
+     * @return User
+     */
+    public function addHabilitation(\GestionAdministrative\LgmBundle\Entity\Habilitation $habilitation)
+    {
+        $this->habilitation[] = $habilitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove habilitation
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Habilitation $habilitation
+     */
+    public function removeHabilitation(\GestionAdministrative\LgmBundle\Entity\Habilitation $habilitation)
+    {
+        $this->habilitation->removeElement($habilitation);
+    }
 }
