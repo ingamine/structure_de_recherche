@@ -97,10 +97,7 @@ class Structure
      */
     private $deletedAt;
 
-    
-    
-    
-    
+         
 
     /**
      * Get id
@@ -334,14 +331,7 @@ class Structure
         return $this->User;
     }
     
-    /**
-     * toString
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getName();
-    }
+   
     /**
      * Set Etablissement
      *
@@ -401,5 +391,10 @@ class Structure
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+    
+      public function __toString()
+    {
+        return strval($this->id);
     }
 }

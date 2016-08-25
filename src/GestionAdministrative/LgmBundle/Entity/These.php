@@ -50,6 +50,11 @@ class These
      */
     private $Etablissement;
     
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    
     private $created;
 
     /**
@@ -177,11 +182,7 @@ class These
         return $this->Etablissement;
     }
     
-   public function __toString()
-    {
-        return strval($this->id);
-    }
-
+  
     /**
      * Set updated
      *
@@ -203,5 +204,10 @@ class These
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+    
+     public function __toString()
+    {
+        return strval($this->id);
     }
 }

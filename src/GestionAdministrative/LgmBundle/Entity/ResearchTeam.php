@@ -157,15 +157,7 @@ class ResearchTeam
         return $this->deletedAt;
     }
     
-    /**
-     * toString
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getName();
-    }
-    
+     
 
     /**
      * Set created
@@ -191,5 +183,10 @@ class ResearchTeam
         $this->updated = $updated;
 
         return $this;
+    }
+    
+      public function __toString()
+    {
+        return strval($this->id);
     }
 }

@@ -51,7 +51,11 @@ class Mastere
     
     private $Etablissement;
     
-    
+     /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+           
     private $created;
 
     /**
@@ -188,16 +192,7 @@ class Mastere
         return $this->Etablissement;
     }
     
-    /**
-     * toString
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
-
+   
     /**
      * Set updated
      *
@@ -210,4 +205,10 @@ class Mastere
 
         return $this;
     }
+    
+        public function __toString()
+    {
+        return strval($this->id);
+    }
+
 }

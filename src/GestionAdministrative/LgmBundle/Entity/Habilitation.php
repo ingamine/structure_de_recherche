@@ -208,15 +208,7 @@ class Habilitation
     {
         return $this->Etablissement;
     }
-     /**
-     * toString
-     * @return string
-     */
-     public function __toString()
-    {
-        return strval($this->id);
-    }
-
+    
 
     /**
      * Set created
@@ -253,4 +245,14 @@ class Habilitation
     {
         return $this->deletedAt;
     }
+    
+     /**
+     * toString
+     * @return string
+     */
+     public function __toString()
+    {
+        return strval($this->id);
+    }
+    
 }

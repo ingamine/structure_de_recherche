@@ -480,11 +480,7 @@ class ProductionScientifique
         return $this->Media;
     }
     
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-
+   
     /**
      * Set updated
      *
@@ -506,5 +502,10 @@ class ProductionScientifique
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+    
+    public function __toString()
+    {
+        return strval($this->id);
     }
 }

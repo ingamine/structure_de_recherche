@@ -584,11 +584,7 @@ class User
     }
 
  
-     public function __toString()
-    {
-        return strval($this->id);
-    }
-
+   
    
     /**
      * Constructor
@@ -598,15 +594,7 @@ class User
         $this->habilitations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-
+         
    
 
     /**
@@ -868,4 +856,11 @@ class User
     {
         $this->habilitation->removeElement($habilitation);
     }
+    
+      public function __toString()
+    {
+        return strval($this->id);
+    }
+    
+    
 }

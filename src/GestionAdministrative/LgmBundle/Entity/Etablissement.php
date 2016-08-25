@@ -101,14 +101,6 @@ class Etablissement
         return $this;
     }
 
-    /**
-     * toString
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->getName();
-    }
 
     /**
      * Set created
@@ -144,5 +136,11 @@ class Etablissement
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+    
+        
+     public function __toString()
+    {
+        return strval($this->id);
     }
 }
