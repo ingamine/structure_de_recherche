@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends('LgmBundle::layout.html.twig') %}
 
-{% block body %}
+{% block content %}
     <h1>User</h1>
 
     <table>
@@ -24,6 +24,7 @@
             <tr>
                 <th>Birthday</th>
                 <td>{% if user.birthday %}{{ user.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
+                       
             </tr>
             <tr>
                 <th>Birthplace</th>
