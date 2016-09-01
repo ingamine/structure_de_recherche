@@ -133,7 +133,7 @@ desired effect
                     <a href="#">
                       <div class="pull-left">
                         <!-- User Image -->
-                        <img src="{{ asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                        <img src="{{ asset('public/dist/img/user-160x160.jpg')}}" class="img-circle" alt="User Image">
                       </div>
                       <!-- Message title and timestamp -->
                       <h4>
@@ -219,7 +219,7 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="{{ asset('public/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">Administrateur</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -227,8 +227,8 @@ desired effect
                 <img src="{{ asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  Adminstrateur - Web Developer
+                  <small>Member since Sep. 2016</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -274,10 +274,10 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('public/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{ asset('public/dist/img/LGM-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Administrateur</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -303,91 +303,29 @@ desired effect
            
                
         <li class="treeview active">
-            <a href="#">
-                <i class="fa fa-share"></i>
-                <span>Chercheurs</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu menu-open" style="display: none;">
-                <li class="">
-                    <a href="#">
-                        <i class="fa fa-circle-o"></i>
-                        Chercheur Junior
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu menu-open" style="display: none;">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-circle-o"></i>
-                                Ajouter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-circle-o"></i>
-                                Lister
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#">
-                        <i class="fa fa-circle-o"></i>
-                        Chercheur Senior
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu menu-open" style="display: none;">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-circle-o"></i>
-                                Ajouter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-circle-o"></i>
-                                Lister
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </li>
-                
-                
-            </ul>
-        </li>
-       <li class="treeview active">
               <a href="#">
                 <i class="fa fa-share"></i>
-                <span>Equipe de Recherche</span>
+                <span>Chercheurs</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>    
            <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                           <a href="{{path ('user_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
                         </li>
                         
             </ul>
-        </li>
-                
+        </li> 
        
                        
         
@@ -410,13 +348,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('habilitation_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('habilitation_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -434,13 +372,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('these_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('these_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -458,13 +396,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('mastere_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('mastere_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -495,13 +433,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -519,13 +457,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                           <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -543,13 +481,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('user_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -579,13 +517,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -603,13 +541,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -627,13 +565,13 @@ desired effect
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_new')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Ajouter
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{path ('soutenance_index')}}">
                                 <i class="fa fa-circle-o"></i>
                                 Lister
                             </a>
@@ -645,7 +583,30 @@ desired effect
             </ul>
         </li>
         
-        
+        <li class="treeview active">
+              <a href="#">
+                <i class="fa fa-share"></i>
+                <span>Stucture</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>    
+           <ul class="treeview-menu menu-open" style="display: none;">
+                        <li>
+                            <a href="{{path ('structure_new')}}">
+                                <i class="fa fa-circle-o"></i>
+                                Ajouter
+                            </a>
+                        </li>
+                        <li>
+                           <a href="{{path ('structure_index')}}">
+                                <i class="fa fa-circle-o"></i>
+                                Lister
+                            </a>
+                        </li>
+                        
+            </ul>
+        </li> 
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -670,7 +631,7 @@ desired effect
     <section class="content">
         
         
-{% block content %}{% endblock %}
+{% block body %}{% endblock %}
       <!-- Your Page Content Here -->
 
        

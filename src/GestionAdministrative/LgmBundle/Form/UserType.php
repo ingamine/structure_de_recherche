@@ -38,13 +38,21 @@ class UserType extends AbstractType
             ->add('birthPlace')
             ->add('email', 'email')
             ->add('phoneNumber', 'number')
-            ->add('grade')
-            ->add('profile')
+            ->add('grade', 'choice', array('choices' => array('PR'=>'Professeur',
+                                                              'MC'=>'Maitre Conférance',
+                                                              'MA'=>'Maitre Assistant',
+                                                              'A'=>'Assistant', )))
+            ->add('profile', 'choice', array('choices' => array('J'=>'Junior','S'=>'Senior')))
             ->add('documentId')
             ->add('photoId')
-            ->add('directeur', 'checkbox' , array('required' =>false))
+                
+            
+	    ->add('directeur', 'checkbox' , array('required' =>false))
             ->add('coDirecteur', 'checkbox' , array('required' =>false))
             ->add('effectue', 'checkbox' , array('required' =>false))
+			
+        
+           
             
             ->add('mediaId')
             

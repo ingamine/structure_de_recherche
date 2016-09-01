@@ -37,7 +37,7 @@
     
   {% endblock %}
 
-{% block content %}
+{% block body %}
 
       
       <div class="box">
@@ -60,6 +60,7 @@
                                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Lastname: activate to sort column ascending">LastName</th>
                                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="Email: activate to sort column ascending">Email</th>
                                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Grade: activate to sort column ascending">Grade</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="These: activate to sort column ascending">These</th>
                                       <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
                                   </tr>
                               </thead>
@@ -73,6 +74,10 @@
                                     <td>{{ user.email }}</td>
                                     
                                     <td>{{ user.grade }}</td>
+                                   
+                                    {% for unTag in user.These %}
+                                     <td>{{ unTag }}</td>
+                                    {% endfor %}
                                     
 
                                     <td>
@@ -95,6 +100,7 @@
                                       <th rowspan="1" colspan="1">Lastname</th>
                                       <th rowspan="1" colspan="1">Email</th>
                                       <th rowspan="1" colspan="1">Grade</th>
+                                      <th rowspan="1" colspan="1">These</th>
                                       <th rowspan="1" colspan="1">Actions</th>
                                   </tr>
                               </tfoot>
