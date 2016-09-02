@@ -1,45 +1,114 @@
 {% extends('LgmBundle::layout.html.twig') %}
 
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('public/plugins/datatables/dataTables.bootstrap.css')}}"> 
+    <link rel="stylesheet" href="{{ asset('public/dist/css/skins/_all-skins.min.css')}}">
+
+    <!-- jQuery 2.2.3 -->
+    <!-- DataTables -->
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('public/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ asset('public/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
+        });
+    </script>
+
+
+{% endblock %}
+
 {% block body %}
-    <h1>These list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Firstdateregistered</th>
-                <th>Updated</th>
-              
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for these in theses %}
-            <tr>
-                <td><a href="{{ path('these_show', { 'id': these.id }) }}">{{ these.id }}</a></td>
-                <td>{{ these.title }}</td>
-                <td>{% if these.firstDateRegistered %}{{ these.firstDateRegistered|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if these.updated %}{{ these.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-               
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('these_show', { 'id': these.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('these_edit', { 'id': these.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('these_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Liste des Chercheurs LGM</h3>
+        </div>
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+
+
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="title: activate to sort column ascending">title</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="firstDateRegistered: activate to sort column ascending">firstDateRegistered</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="updated: activate to sort column ascending">updated</th>
+
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for these in theses %}
+                                    <tr>
+                                        <td><a href="{{ path('these_show', { 'id': these.id }) }}">{{ these.id }}</a></td>
+                                        <td>{{ these.title }}</td>
+                                        <td>{% if these.firstDateRegistered %}{{ these.firstDateRegistered|date('Y-m-d') }}{% endif %}</td>
+                                        <td>{% if these.updated %}{{ these.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('these_show', { 'id': these.id }) }}">show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('these_edit', { 'id': these.id }) }}">edit</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">title</th>
+                                    <th rowspan="1" colspan="1">firstDateRegistered</th>
+                                    <th rowspan="1" colspan="1">updated</th>
+
+
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <ul>
+                            <li>
+                                <a href="{{ path('these_new') }}">Create a new entry</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
 {% endblock %}

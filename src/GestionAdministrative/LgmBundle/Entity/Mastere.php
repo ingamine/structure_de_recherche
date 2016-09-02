@@ -208,7 +208,7 @@ class Mastere
     
         public function __toString()
     {
-        return strval($this->id);
+       return $this->getTitle();
     }
 
 }

@@ -395,6 +395,6 @@ class Structure
     
       public function __toString()
     {
-        return strval($this->id);
+        return $this-> getName();
     }
 }
