@@ -1,98 +1,63 @@
-{% extends('LgmBundle::layout.html.twig') %}
+{% extends('::base.html.twig') %}
 
-{% block stylesheets %}
-  {{ parent() }}
- 
-  
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('public/plugins/datatables/dataTables.bootstrap.css')}}"> 
-  <link rel="stylesheet" href="{{ asset('public/dist/css/skins/_all-skins.min.css')}}">
-          
-     <!-- jQuery 2.2.3 -->
-    <!-- DataTables -->
- 
-
-    
-  {% endblock %}
-  
-{% block js %}
-  <script src="{{ asset('public/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('public/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+{% block javascripts %}
+    {{ parent() }}
     <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
-    
-    
-  {% endblock %}
+        $(function () {
+            $("#list").DataTable();
+        });
+    </script>
+{% endblock %}
 
 {% block body %}
-    
-    <div class="box">
-          <div class="box-header">
-              <h3 class="box-title">Liste des etablissements </h3>
-          </div>
-          <div class="box-body">
-              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                  
-                  
-                  
-                  
-                  <div class="row">
-                      <div class="col-sm-12">
-                          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                              <thead>
-                                  <tr role="row">
-                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Name: activate to sort column ascending">Name</th>
-                                      
-                                     
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
-                                  </tr>
-                             
-        </thead>
-        <tbody>
-        {% for etablissement in etablissements %}
-            <tr>
-                <td><a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">{{ etablissement.id }}</a></td>
-                <td>{{ etablissement.name }}</td>
-                
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('etablissement_show', { 'id': etablissement.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        <tfoot>
-                                  <tr>
-                                      <th rowspan="1" colspan="1">ID</th>
-                                      <th rowspan="1" colspan="1">Name</th>
-                                      
-                                     
-                                      <th rowspan="1" colspan="1">Actions</th>
-                                  </tr>
-        </tfoot>
-        </tbody>
-    </table>
+<div class="box box-info box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title text-uppercase">Liste des etablissements</h3>
+        <span class="pull-right">
+            <a href="{{ path('etablissement_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+        </span>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('etablissement_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <div class="box-body">
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table id="list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Name: activate to sort column ascending">Name</th>
+
+
+                            <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for etablissement in etablissements %}
+                            <tr>
+                                <td><a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}">#{{ etablissement.id }}</a></td>
+                                <td>{{ etablissement.name }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="{{ path('etablissement_edit', { 'id': etablissement.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th rowspan="1" colspan="1">ID</th>
+                            <th rowspan="1" colspan="1">Name</th>
+                            <th rowspan="1" colspan="1">Actions</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

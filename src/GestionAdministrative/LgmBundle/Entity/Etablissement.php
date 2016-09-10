@@ -3,8 +3,9 @@
 namespace GestionAdministrative\LgmBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Etablissement
@@ -28,6 +29,7 @@ class Etablissement
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 

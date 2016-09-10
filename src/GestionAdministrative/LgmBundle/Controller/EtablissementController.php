@@ -44,26 +44,12 @@ class EtablissementController extends Controller
             $em->persist($etablissement);
             $em->flush();
 
-            return $this->redirectToRoute('etablissement_show', array('id' => $etablissement->getId()));
+            return $this->redirectToRoute('etablissement_edit', array('id' => $etablissement->getId()));
         }
 
         return $this->render('etablissement/new.html.twig', array(
             'etablissement' => $etablissement,
             'form' => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Etablissement entity.
-     *
-     */
-    public function showAction(Etablissement $etablissement)
-    {
-        $deleteForm = $this->createDeleteForm($etablissement);
-
-        return $this->render('etablissement/show.html.twig', array(
-            'etablissement' => $etablissement,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
