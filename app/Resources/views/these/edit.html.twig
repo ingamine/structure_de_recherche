@@ -1,21 +1,29 @@
 {% extends('::base.html.twig') %}
 
+
 {% block body %}
-    <h1>These edit</h1>
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Modifier une these</h3>
+            <span class="pull-right">
+                {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger text-uppercase"/>Supprimer</button>
+                {{ form_end(delete_form) }}
+            </span>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('these_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="box-body">
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <span class="pull-right">
+            <a href="{{ path('these_index') }}" class="btn btn-default text-uppercase">Annuler</a>
+            <button type="submit" class="btn btn-success text-uppercase"/><i class="fa fa-check"></i> Modifier</button>
+        </span>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
 {% endblock %}
+
+
+
+

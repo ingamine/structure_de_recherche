@@ -1,128 +1,86 @@
 {% extends('::base.html.twig') %}
 
-{% block stylesheets %}
-  {{ parent() }}
- 
-  
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('public/plugins/datatables/dataTables.bootstrap.css')}}"> 
-  <link rel="stylesheet" href="{{ asset('public/dist/css/skins/_all-skins.min.css')}}">
-          
-     <!-- jQuery 2.2.3 -->
-    <!-- DataTables -->
-  
-
-    
-  {% endblock %}
-  
-{% block js %}
-  <script src="{{ asset('public/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{ asset('public/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
+{% block javascripts %}
+    {{ parent() }}
     <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
-    
-    
-  {% endblock %}
+        $(function () {
+            $("#list").DataTable();
+        });
+    </script>
+{% endblock %}
 
 {% block body %}
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title text-uppercase">Liste des structures </h3>
+            <span class="pull-right">
+                <a href="{{ path('structure_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+            </span>
+        </div>
 
-      
-      <div class="box">
-          <div class="box-header">
-              <h3 class="box-title">Liste des Chercheurs LGM</h3>
-          </div>
-          <div class="box-body">
-              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                  
-                  
-                  
-                  
-                  <div class="row">
-                      <div class="col-sm-12">
-                          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                              <thead>
-                                  <tr role="row">
-                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="name: activate to sort column ascending">name</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="nomChef: activate to sort column ascending">nomChef</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="prenomChef: activate to sort column ascending">prenomChef</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="cinChef: activate to sort column ascending">cinChef</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="universite: activate to sort column ascending">universite</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="webSite: activate to sort column ascending">webSite</th>
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="dateCreation: activate to sort column ascending">dateCreation</th>
-                                      
-                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
-                                  </tr>
-                              </thead>
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="name: activate to sort column ascending">name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="nomChef: activate to sort column ascending">nomChef</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="prenomChef: activate to sort column ascending">prenomChef</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="cinChef: activate to sort column ascending">cinChef</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="universite: activate to sort column ascending">universite</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="webSite: activate to sort column ascending">webSite</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="dateCreation: activate to sort column ascending">dateCreation</th>
 
-        <tbody>
-        {% for structure in structures %}
-            <tr>
-                <td><a href="{{ path('structure_show', { 'id': structure.id }) }}">{{ structure.id }}</a></td>
-                <td>{{ structure.name }}</td>
-                <td>{{ structure.nomChef }}</td>
-                <td>{{ structure.prenomChef }}</td>
-                <td>{{ structure.cinChef }}</td>
-                <td>{{ structure.universite }}</td>
-                <td>{{ structure.webSite }}</td>
-                <td>{% if structure.dateCreation %}{{ structure.dateCreation|date('Y-m-d') }}{% endif %}</td>
-                
-               
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('structure_show', { 'id': structure.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('structure_edit', { 'id': structure.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-                                  <tr>
-                                      <th rowspan="1" colspan="1">ID</th>
-                                      <th rowspan="1" colspan="1">name</th>
-                                      <th rowspan="1" colspan="1">nomChef</th>
-                                      <th rowspan="1" colspan="1">prenomChef</th>
-                                      <th rowspan="1" colspan="1">cinChef</th>
-                                      <th rowspan="1" colspan="1">universite</th>
-                                      <th rowspan="1" colspan="1">webSite</th>
-                                      <th rowspan="1" colspan="1">dateCreation</th>
-                                     
-                                      <th rowspan="1" colspan="1">Actions</th>
-                                  </tr>
-                              </tfoot>
-    </table>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
+                                </tr>
+                            </thead>
 
-    <ul>
-        <li>
-            <a href="{{ path('structure_new') }}">Create a new entry</a>
-        </li>
-    </ul>
-            
+                            <tbody>
+                                {% for structure in structures %}
+                                    <tr>
+                                        <td><a href="{{ path('structure_show', { 'id': structure.id }) }}">{{ structure.id }}</a></td>
+                                        <td>{{ structure.name }}</td>
+                                        <td>{{ structure.nomChef }}</td>
+                                        <td>{{ structure.prenomChef }}</td>
+                                        <td>{{ structure.cinChef }}</td>
+                                        <td>{{ structure.universite }}</td>
+                                        <td>{{ structure.webSite }}</td>
+                                        <td>{% if structure.dateCreation %}{{ structure.dateCreation|date('Y-m-d') }}{% endif %}</td>
+
+
+                                        <td>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="{{ path('structure_edit', { 'id': structure.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">name</th>
+                                    <th rowspan="1" colspan="1">nomChef</th>
+                                    <th rowspan="1" colspan="1">prenomChef</th>
+                                    <th rowspan="1" colspan="1">cinChef</th>
+                                    <th rowspan="1" colspan="1">universite</th>
+                                    <th rowspan="1" colspan="1">webSite</th>
+                                    <th rowspan="1" colspan="1">dateCreation</th>
+
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
-                  </div>
-                  
-              </div>
-          </div>
-        
-        
- 
-      </div>
-  
-            
+        </div>
+    </div>
+
+
 {% endblock %}
