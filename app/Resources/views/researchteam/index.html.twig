@@ -1,47 +1,73 @@
 {% extends('::base.html.twig') %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $("#list").DataTable();
+        });
+    </script>
+{% endblock %}
+
 {% block body %}
-    <h1>ResearchTeam list</h1>
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title text-uppercase">Liste des Equipes de Recherche</h3>
+            <span class="pull-right">
+                <a href="{{ path('researchteam_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+            </span>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Productionindex</th>
-                <th>Created</th>
-                <th>Updated</th>
-               
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for researchTeam in researchTeams %}
-            <tr>
-                <td><a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">{{ researchTeam.id }}</a></td>
-                <td>{{ researchTeam.name }}</td>
-                <td>{{ researchTeam.productionIndex }}</td>
-                <td>{% if researchTeam.created %}{{ researchTeam.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if researchTeam.updated %}{{ researchTeam.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-              
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('researchteam_edit', { 'id': researchTeam.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="list" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Name: activate to sort column ascending">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="productionIndex: activate to sort column ascending">productionIndex</th>
 
-    <ul>
-        <li>
-            <a href="{{ path('researchteam_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                {% for researchTeam in researchTeams %}
+                                    <tr>
+                                        <td><a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">#{{ researchTeam.id }}</a></td>
+                                        <td>{{ researchTeam.name }}</td>
+                                        <td>{{ researchTeam.productionIndex }}</td>
+                                        <td>{% if researchTeam.created %}{{ researchTeam.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{% if researchTeam.updated %}{{ researchTeam.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('researchteam_edit', { 'id': researchTeam.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">productionIndex</th>
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
