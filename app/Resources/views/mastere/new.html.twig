@@ -1,16 +1,22 @@
 {% extends('::base.html.twig') %}
 
 {% block body %}
-    <h1>Mastere creation</h1>
+<div class="box box-info box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ajouter une mastere</h3>
+    </div>
 
-    {{ form_start(form) }}
+    <div class="box-body">
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('mastere_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <span class="pull-right">
+            <a href="{{ path('mastere_index') }}" class="btn btn-default text-uppercase">Annuler</a>
+            <button type="submit" class="btn btn-success text-uppercase"/><i class="fa fa-check"></i> Ajouter</button>
+        </span>
+        {{ form_end(form) }}
+    </div>
+</div>
 {% endblock %}
+
+
+
