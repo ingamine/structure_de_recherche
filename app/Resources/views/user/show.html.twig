@@ -1,9 +1,18 @@
 {% extends('::base.html.twig') %}
 
-{% block body %}
-    <h1>User</h1>
 
-    <table>
+
+
+{% block body %}
+    
+    
+    
+    <div class="responsive-table-line" style="border: 5px solid #ccc;
+         margin:0px auto;
+         max-width:800px;
+         border-collapse: collapse;">
+
+     <table class="table table-bordered table-body-center" >
         <tbody>
             <tr>
                 <th>Id</th>
@@ -46,6 +55,7 @@
                 <th>Profile</th>
                 <td>{{ user.profile }}</td>
             </tr>
+           {#
             <tr>
                 <th>Documentid</th>
                 <td>{{ user.documentId }}</td>
@@ -54,6 +64,7 @@
                 <th>Photoid</th>
                 <td>{{ user.photoId }}</td>
             </tr>
+            #}
             <tr>
                 <th>Directeur</th>
                 <td>{% if user.directeur %}Yes{% else %}No{% endif %}</td>
@@ -70,6 +81,16 @@
                 <th>Mediaid</th>
                 <td>{{ user.mediaId }}</td>
             </tr>
+            
+            <tr>
+                <th>structure</th>
+                <td>{{ user.structure.getName() }}</td>
+            </tr>
+            <tr>
+                <th>Etablissement</th>
+                <td>{{ user.structure.etablissement.getName() }}</td>
+            </tr>
+            {#
             <tr>
                 <th>Created</th>
                 <td>{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -78,21 +99,36 @@
                 <th>Updated</th>
                 <td>{% if user.updated %}{{ user.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            #}
+           {% set runtimeConfig = {"thumbnail": {"size": [100, 100] }} %}
+            <img src="{{ vich_uploader_asset(user, 'imageFile')|imagine_filter('my_thumb',runtimeConfig) }}" alt="{{ user.imageName }}" />
            
+            
+            
         </tbody>
     </table>
 
+    
     <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        <a class="btn btn-warning btn-sm" href="{{ path('user_edit', { 'id': user.id }) }}">
+            <i class="fa fa-cog"></i> Edit</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('user_delete', { 'id': user.id }) }}">
+            <i class="fa fa-trash-o fa-lg"></i> Delete </a>
+        
+               
+        <a class="btn btn-primary" href="{{ path('user_index') }}" aria-label="Skip to main navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        
+           
+            
     </ul>
+           
+        </div>
+        <li>
+        <a href="{{ path('user_ficheChercheurPDF', { 'id': user.id }) }}" target="_blank">lien fiche</a>
+        </li>
+
+
+
 {% endblock %}

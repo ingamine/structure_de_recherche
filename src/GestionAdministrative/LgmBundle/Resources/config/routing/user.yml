@@ -22,3 +22,8 @@ user_delete:
     path:     /{id}/delete
     defaults: { _controller: "LgmBundle:User:delete" }
     methods:  DELETE
+    
+user_ficheChercheurPDF:
+    path:     /{id}/ficheChercheurPDF
+    defaults: { _controller: "LgmBundle:User:ficheChercheurPDF" }
+    methods:  [GET, POST]

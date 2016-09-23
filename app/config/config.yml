@@ -7,8 +7,8 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
-
+    locale: fr
+   
 framework:
     #esi:             ~
     translator:      ~
@@ -37,7 +37,7 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'bootstrap_3_layout.html.twig'
-            
+        - 'VichUploaderBundle:Form:fields.html.twig' 
     #form_themes: ["bootstrap_3_layout.html.twig"]
 # Doctrine Configuration
 doctrine:
@@ -114,3 +114,27 @@ stof_doctrine_extensions:
     orm:
         default:
             softdeleteable: true
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        user_image:
+            
+            uri_prefix:        /images/user
+            upload_destination: %kernel.root_dir%/../web/images/user
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            
+            
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+
+    filter_sets:
+        cache: ~
+        my_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 90], mode: outbound }     

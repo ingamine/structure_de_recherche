@@ -18,7 +18,10 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "stof/doctrine-extensions-bundle": "^1.2"
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "vich/uploader-bundle": "^0.14.0",
+        "liip/imagine-bundle": "^1.6",
+        "bmatzner/fontawesome-bundle": "~4.6"
         
     },
     "require-dev": {

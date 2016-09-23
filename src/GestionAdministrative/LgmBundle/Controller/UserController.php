@@ -21,7 +21,6 @@ class UserController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $users = $em->getRepository('LgmBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
@@ -41,6 +40,13 @@ class UserController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            
+            $entity = new imageName();; // get the entity..
+            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+            $path = $helper->asset($entity, 'imageName');
+            
+            
             $em->persist($user);
             $em->flush();
 
@@ -125,4 +131,35 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+    
+    public function ficheChercheurPDFAction($id)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $fiche = $em->getRepository('LgmBundle:User')->find($id);
+        
+        if (!$fiche){
+            $this->get('session')->getFlashBag()->add('error', 'Une erreur est survenu');
+            return $this->redirect($this->generateUrl('fiche'));
+        
+         }
+         
+        $html = $this->renderView('user/ficheChercheurPDF.html.twig', array('fiche' => $fiche));
+        $html2pdf = new \Html2Pdf_Html2Pdf('P','A4','fr');
+        $html2pdf->pdf->SetAuthor('LGM');
+        $html2pdf->pdf->SetTitle('FICHE INDIVIDUELLE');
+        $html2pdf->pdf->SetSubject('FIche Chercheur');
+        $html2pdf->pdf->SetKeywords('Fiche  identifictaion');
+        $html2pdf->pdf->SetDisplayMode('real');
+        $html2pdf->writeHTML($html);
+         ob_end_clean();
+        $html2pdf->Output('fiche.pdf');
+         
+        $response = new Response();
+        $response->headers->set('Content-type' , 'application/pdf');
+        
+        return $response;
+    }
+         
+          
 }

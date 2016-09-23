@@ -42,7 +42,7 @@
                             <tbody>
                                 {% for user in users %}
                                     <tr>
-                                        <td><a href="{{ path('user_show', { 'id': user.id }) }}">#{{ user.id }}</a></td>
+                                        <td><a href="{{ path('user_show', { 'id': user.id }) }}"><i class="fa fa-anchor" aria-hidden="true"></i>  {{ user.id }}</a></td>
                                         <td>{{ user.name }}</td>
                                         <td>{{ user.lastName }}</td>
 
@@ -63,7 +63,7 @@
                                         <td>
                                             <ul class="list-unstyled">
                                                 <li>
-                                                    <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                                                    <a href="{{ path('user_show', { 'id': user.id }) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
                                                 </li>
                                                 <li>
                                                    <a href="{{ path('user_edit', { 'id': user.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>

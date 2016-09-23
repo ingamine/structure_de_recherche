@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Facture</title>
+        <link href="./css/facture.css" rel="stylesheet" type="text/css" />
+    </head>
+    <style>
+
+        .div3{
+            border: 2px solid #ccc;
+            margin:0px auto;
+            border-collapse: inherit;
+            width: 710px;
+
+        }
+        .div3 td{
+
+            width: 300px;
+            padding: 5px;
+            overflow: no-display;
+            text-align:center;
+            border-collapse: collapse;
+        }
+        .ea{
+            border: 1px solid #ccc;
+            border-width: 2px;
+            text-align: justify;
+            padding: 5px;
+
+        }
+        .ea td{
+            width:725px;
+
+        }
+
+        .div2 {
+            background-color:#DCDCDC;
+            margin:0px auto;
+            width:730px;
+            border-collapse: collapse;
+            border: 1px; 
+            padding: 5px;
+            align:center;
+
+        }
+
+        .ec{
+            border: 1px solid #ccc;
+            border-width: 2px;
+            margin:0px auto;
+            border-collapse: collapse;
+        }
+
+        .ec td{
+            padding: 5px;
+            text-align:left;
+
+        }
+        .div1 {
+            border: 1px solid #ccc;
+            border-width: 2px;
+            width:720px;
+            margin: auto;
+        }
+        .div4{
+
+            margin:0px auto;
+            border-collapse: collapse;
+
+        }
+    </style>
+    <body>
+        <br />
+        <br />
+        <div class="div3">
+            <table>
+                <tr>
+                    <td  style="background-color:#DCDCDC; border: 1px; width: 320px;  ">REPUBLIQUE TUNISIENNE<br />
+                        <em>Ministère de l’Enseignement Supérieur et de la <br />Recherche Scientifique <br />
+                            Université de Monastir <br />
+                            <br />
+                            Ecole Nationale d’Ingénieurs de Monastir
+                        </em><br /></td>
+                    <td style="background-color:#DCDCDC; border: 1px; width: 380px;   "  ><b>FICHE INDIVIDUELLE</b>
+                        <br />
+                        <em>
+                            <u><b>(Obligatoire</b></u> pour tout enseignant-chercheur, doctorant et <br />cadre technique ayant 
+                            un grade équivalent ou homologue au grade d’assistant d’enseignement supérieur <u><b>sous peine de ne pas être pris en considération)</b></u>
+                        </em><br /></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+
+        <table class="ea" align="center">
+            <tr>
+                <td>NB : - Tout chercheur,  faisant partie d'un LR ou d'une UR, ne peut faire partie d’une autre structure de recherche.<br /> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Tout doctorant doit joindre obligatoirement une copie de son attestation d’inscription délivrée au
+                    titre de l’année universitaire en cours.
+
+                </td>
+            </tr>
+        </table>
+        <br />
+
+        <div class="div1">
+            <div class="div2" >
+                <table align="center">
+                    <tr >
+                        <td>1- IDENTIFICATION DU CHERCHEUR</td>
+                    </tr>
+                </table>
+
+            </div>
+            <br />
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="120">Nom et Prénom :</td>
+                    <td width="220">{{ fiche.name }} {{ fiche.lastName }}</td>
+                    <td width="115">Nom de jeune fille :</td>
+                    <td width="195">*****</td>
+
+
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="160">Date et lieu de naissance :</td>
+                    <td width="180">{% if fiche.birthday %}{{ fiche.birthday|date('d-m-Y ') }}{% endif %} {{ fiche.birthPlace }}</td>
+                    <td width="115">Sexe</td>
+                    <td width="195">{{ fiche.gender }}</td>
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="160">N° CIN (tunisien) :</td>
+                    <td width="180">***************</td>
+                    <td width="160">N° Passeport (étranger) :</td>
+                    <td width="150">************</td>
+                </tr>
+            </table>  
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="60">- Grade:</td>
+                    <td width="190">{{ fiche.grade }}</td>
+                    <td width="95">Etablissement :</td>
+                    <td width="305">************</td>
+                </tr>
+            </table>      
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="80">- Téléphone :</td>
+                    <td width="180">{{ fiche.phoneNumber }}</td>
+                    <td width="70">E-mail :</td>
+                    <td width="320">{{ fiche.email }}</td>
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="155">- Dernier diplôme obtenu :</td>
+                    <td width="85">****</td>
+                    <td width="35">Date :</td>
+                    <td width="65">*****</td>
+                    <td width="95"> Etablissement :</td>
+                    <td width="170">***</td>
+                </tr>
+            </table>
+            <br />
+            <div class="div2">
+                <table align="center">
+                    <tr>
+                        <td>2- IDENTIFICATION DU LABORATOIRE DE RECHERCHE (de rattachement)</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <table  class="ec" align="left" >
+                <tr>
+                    <td width="155">&nbsp;- Dénomination du L.R :</td>                
+                    <td width="400">{{ fiche.structure.getName() }}</td>
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="160">- Etablissement :</td>
+                    <td width="180">{{ fiche.structure.etablissement.getName() }}</td>
+                    <td width="115">Universtité</td>
+                    <td width="195">{{ fiche.structure.getUniversite() }}</td>
+                </tr>
+            </table>
+            <table  class="ec" align="left" >
+                <tr>
+                    <td width="160">&nbsp;- Responsable du L.R :</td>
+                    <td width="460">{{ fiche.structure.getPrenomChef() }} {{ fiche.structure.getNomChef() }}</td>
+
+                </tr>
+            </table>  
+            <br />
+            <div class="div2">
+                <table align="center">
+                    <tr>
+                        <td>3- CASE RESEVEE AU DOCTORANT</td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="225">- Intitulé du sujet de recherche :</td>
+                    <td width="470">******</td>
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="490">***************</td>
+                    <td width="125">Taux d’avancement:</td>
+                    <td width="40">********%</td>
+                </tr>
+            </table>
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="320">- Année universitaire de la première inscription :</td>
+                    <td width="375">***************</td>
+                </tr>
+            </table>  
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="380">- Etablissement universitaire (où  est effectuée l’inscription) :</td>
+                    <td width="315">***************</td>
+                </tr>
+            </table>      
+            <table  class="ec" align="center" >
+                <tr>
+                    <td width="320">- Nom et prénom du directeur de thèse :</td>
+                    <td width="375">***************</td>
+                </tr>
+            </table> 
+            <br />
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <div class="div4">
+            <table align="center">
+                <tr>
+                    <td style="border: none; width: 260px; height: 20px">Signature du chercheur</td>
+                    <td style="border: none; width: 120px; height: 20px"></td>
+                    <td style="border: none; width: 260px; height: 20px">Signature du chef du L.R</td>
+                </tr>
+
+            </table>
+
+            <table align="center">
+                <tr>
+                    <td style="border: none; width: 260px; height: 20px">Date : ……... /.......... / ………….….</td>
+                    <td style="border: none; width: 110px; height: 20px"></td>
+                    <td style="border: none; width: 260px; height: 20px">Date : ……... /.......... / ………….….</td>
+                </tr>
+            </table>
+            <br />
+
+            <table align="center">   
+                <tr>
+                    <td style="border: 1px; width: 260px; height: 50px"></td>
+                    <td style="border: none; width: 100px; height: 50px"></td>
+                    <td style="border: 1px; width: 260px; height: 50px"></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <p>NB : Les deux signatures sont obligatoires (sous peine de ne pas être pris en considération)</p>
+    </body>
+
+</html>

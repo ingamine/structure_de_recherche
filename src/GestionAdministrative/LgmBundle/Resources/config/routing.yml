@@ -31,3 +31,4 @@ lgm_these:
 lgm_homepage:
     path:     /
     defaults: { _controller: LgmBundle:Default:index }
+
