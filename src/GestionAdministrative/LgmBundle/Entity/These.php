@@ -210,4 +210,17 @@ class These
     {
         return $this->getTitle();
     }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return These
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
 }

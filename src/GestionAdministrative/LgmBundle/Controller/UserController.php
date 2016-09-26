@@ -42,9 +42,9 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             
             
-            $entity = new imageName();; // get the entity..
+           
             $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
-            $path = $helper->asset($entity, 'imageName');
+            $path = $helper->asset($user, 'imageFile');
             
             
             $em->persist($user);
