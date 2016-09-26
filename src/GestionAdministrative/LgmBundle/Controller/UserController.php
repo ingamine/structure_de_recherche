@@ -160,6 +160,17 @@ class UserController extends Controller
         
         return $response;
     }
-         
+       
+    
+    
+    public function ficheDoctorantAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('LgmBundle:User')->findAll();
+
+        return $this->render('user/ficheDoctorant.html.twig', array(
+            'users' => $users,
+        ));
+    }
           
 }

@@ -27,3 +27,8 @@ user_ficheChercheurPDF:
     path:     /{id}/ficheChercheurPDF
     defaults: { _controller: "LgmBundle:User:ficheChercheurPDF" }
     methods:  [GET, POST]
+
+user_ficheDoctorant:
+    path:     /{id}/ficheDoctorant
+    defaults: { _controller: "LgmBundle:User:ficheDoctorant" }
+    methods:  [GET, POST]

@@ -66,8 +66,15 @@
                                                     <a href="{{ path('user_show', { 'id': user.id }) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
                                                 </li>
                                                 <li>
-                                                   <a href="{{ path('user_edit', { 'id': user.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                    <a href="{{ path('user_edit', { 'id': user.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{ path('user_ficheChercheurPDF', { 'id': user.id }) }}" target="_blank"><i class="fa fa-file-pdf-o"></i> ficheChercheur </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('user_ficheDoctorant', { 'id': user.id }) }}" target="_blank"><i class="fa fa-file-photo-o"></i> ficheDoctorant </a>
+                                                </li>
+
                                             </ul>
                                         </td>
                                     </tr>
