@@ -1,0 +1,125 @@
+{% extends('::base.html.twig') %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $("#list").DataTable();
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title text-uppercase">Liste des Doctorant LGM</h3>
+            <span class="pull-right">
+                <a href="{{ path('user_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+            </span>
+        </div>
+
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                       <table id="list"  class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+               {#
+                <th>Id</th>
+                <th>Grade</th>
+                <th>Cindoctorant</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Nomjeunefille</th>
+                <th>Datenaiss</th>
+                <th>Lieunaiss</th>
+                <th>Sexe</th>
+                <th>Telmob</th>
+                <th>Telfixe</th>
+                <th>Email</th>
+                <th>Dernierdepobtenu</th>
+                <th>Datedepobtenu</th>
+                <th>Etabdepobtenu</th>
+                <th>Codestructure</th>
+                <th>Intitulesujet</th>
+                <th>Tauxavancement</th>
+                <th>Anneepremierinscrip</th>
+                <th>Etbinscrip</th>
+                <th>Etabinscrip2</th>
+                <th>Cinencad</th>
+                <th>Actions</th>
+                #}
+            </tr>
+        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Grade: activate to sort column ascending">Grade</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Cindoctorant: activate to sort column ascending">Cindoctorant</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="Nom: activate to sort column ascending">Nom</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Prenom: activate to sort column ascending">Prenom</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Nomjeunefille: activate to sort column ascending">Nomjeunefille</th>
+
+                                    
+
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+        {% for doctorant in doctorants %}
+            <tr>
+               <td><a href="{{ path('doctorant_show', { 'id': doctorant.id }) }}"><i class="fa fa-anchor" aria-hidden="true"></i>  {{ doctorant.id }}</a></td>
+                <td>{{ doctorant.grade }}</td>
+                <td>{{ doctorant.cINDoctorant }}</td>
+                <td>{{ doctorant.nom }}</td>
+                <td>{{ doctorant.prenom }}</td>
+                <td>{{ doctorant.nomJeuneFille }}</td>
+                {#
+                <td>{% if doctorant.dateNaiss %}{{ doctorant.dateNaiss|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ doctorant.lieuNaiss }}</td>
+                <td>{{ doctorant.sexe }}</td>
+                <td>{{ doctorant.telMob }}</td>
+                <td>{{ doctorant.telFixe }}</td>
+                <td>{{ doctorant.eMail }}</td>
+                <td>{{ doctorant.dernierDepObtenu }}</td>
+                <td>{% if doctorant.dateDepObtenu %}{{ doctorant.dateDepObtenu|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ doctorant.etabDepObtenu }}</td>
+                <td>{{ doctorant.codeStructure }}</td>
+                <td>{{ doctorant.intituleSujet }}</td>
+                <td>{{ doctorant.tauxAvancement }}</td>
+                <td>{% if doctorant.anneePremierInscrip %}{{ doctorant.anneePremierInscrip|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ doctorant.etbInscrip }}</td>
+                <td>{{ doctorant.etabInscrip2 }}</td>
+                <td>{{ doctorant.cinEncad }}</td>
+                #}
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('doctorant_show', { 'id': doctorant.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('doctorant_edit', { 'id': doctorant.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+                                <tr>
+                                    
+                                    <th rowspan="1" colspan="1">grade</th>
+                                    <th rowspan="1" colspan="1">cINDoctorant</th>
+                                    <th rowspan="1" colspan="1">nom</th>
+                                    <th rowspan="1" colspan="1">prenom</th>
+                                    <th rowspan="1" colspan="1">nomJeuneFille</th>
+
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
+    </table>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,3 +1,7 @@
+lgm_doctorant:
+    resource: "@LgmBundle/Controller/DoctorantController.php"
+    type:     annotation
+
 lgm:
     resource: "@LgmBundle/Resources/config/routing.yml"
     prefix:   /
