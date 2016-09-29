@@ -635,4 +635,27 @@ class Doctorant
     {
         return $this->grade;
     }
+
+    /**
+     * Set cinEncad
+     *
+     * @param integer $cinEncad
+     * @return Doctorant
+     */
+    public function setCinEncad($cinEncad)
+    {
+        $this->cinEncad = $cinEncad;
+
+        return $this;
+    }
+
+    /**
+     * Get cinEncad
+     *
+     * @return integer 
+     */
+    public function getCinEncad()
+    {
+        return $this->cinEncad;
+    }
 }

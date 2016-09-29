@@ -1,9 +1,15 @@
 {% extends('::base.html.twig') %}
 
 {% block body %}
-    <h1>Doctorant</h1>
+    
+    
+    
+    <div class="responsive-table-line" style="border: 5px solid #ccc;
+         margin:0px auto;
+         max-width:800px;
+         border-collapse: collapse;">
 
-    <table>
+     <table class="table table-bordered table-body-center" >
         <tbody>
             <tr>
                 <th>Id</th>
@@ -93,20 +99,24 @@
                 <th>Cinencad</th>
                 <td>{{ doctorant.cinEncad }}</td>
             </tr>
+            
+            
+            
         </tbody>
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('doctorant_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('doctorant_edit', { 'id': doctorant.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        <a class="btn btn-warning btn-sm" href="{{ path('doctorant_edit', { 'id': doctorant.id }) }}">
+            <i class="fa fa-cog"></i> Edit</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('doctorant_delete', { 'id': doctorant.id }) }}">
+            <i class="fa fa-trash-o fa-lg"></i> Delete </a>
+        
+               
+        <a class="btn btn-primary" href="{{ path('doctorant_index') }}" aria-label="Skip to main navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        
+           
+            
     </ul>
 {% endblock %}
