@@ -56,7 +56,7 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Cindoctorant: activate to sort column ascending">Cindoctorant</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="Nom: activate to sort column ascending">Nom</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Prenom: activate to sort column ascending">Prenom</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Nomjeunefille: activate to sort column ascending">Nomjeunefille</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="Cinencad: activate to sort column ascending">Cinencad</th>
 
                                     
 
@@ -71,8 +71,17 @@
                 <td>{{ doctorant.cINDoctorant }}</td>
                 <td>{{ doctorant.nom }}</td>
                 <td>{{ doctorant.prenom }}</td>
-                <td>{{ doctorant.nomJeuneFille }}</td>
-                {#
+                <td>{{ doctorant.cinEncad }}</td>
+                
+                
+                
+                  {#
+                
+                {% for unTag in doctorant.cinEncad %}
+                    <td>{{ unTag }}</td>
+                {% endfor %}
+               
+              
                 <td>{% if doctorant.dateNaiss %}{{ doctorant.dateNaiss|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ doctorant.lieuNaiss }}</td>
                 <td>{{ doctorant.sexe }}</td>
@@ -110,7 +119,7 @@
                                     <th rowspan="1" colspan="1">cINDoctorant</th>
                                     <th rowspan="1" colspan="1">nom</th>
                                     <th rowspan="1" colspan="1">prenom</th>
-                                    <th rowspan="1" colspan="1">nomJeuneFille</th>
+                                    <th rowspan="1" colspan="1">Cinencad</th>
 
                                     <th rowspan="1" colspan="1">Actions</th>
                                 </tr>

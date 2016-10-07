@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cadre_equivalant</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cadre_equivalant.id }}</td>
+            </tr>
+            <tr>
+                <th>Qualite</th>
+                <td>{{ cadre_equivalant.qualite }}</td>
+            </tr>
+            <tr>
+                <th>Cincequivalant</th>
+                <td>{{ cadre_equivalant.cINCEquivalant }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ cadre_equivalant.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ cadre_equivalant.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Codestructure</th>
+                <td>{{ cadre_equivalant.codeStructure }}</td>
+            </tr>
+            <tr>
+                <th>Etab</th>
+                <td>{{ cadre_equivalant.etab }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{% if cadre_equivalant.datenaissance %}{{ cadre_equivalant.datenaissance|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieu_naissance</th>
+                <td>{{ cadre_equivalant.lieunaissance }}</td>
+            </tr>
+            <tr>
+                <th>Tel_mob</th>
+                <td>{{ cadre_equivalant.telmob }}</td>
+            </tr>
+            <tr>
+                <th>Tel_fixe</th>
+                <td>{{ cadre_equivalant.telfixe }}</td>
+            </tr>
+            <tr>
+                <th>E_mail</th>
+                <td>{{ cadre_equivalant.email }}</td>
+            </tr>
+            <tr>
+                <th>Dernier_diplome_obtenu</th>
+                <td>{{ cadre_equivalant.dernierdiplomeobtenu }}</td>
+            </tr>
+            <tr>
+                <th>Date_dernier_dip_obtenu</th>
+                <td>{% if cadre_equivalant.datedernierdipobtenu %}{{ cadre_equivalant.datedernierdipobtenu|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etabdepobtenu</th>
+                <td>{{ cadre_equivalant.etabDepObtenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cadre_equivalant_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cadre_equivalant_edit', { 'id': cadre_equivalant.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

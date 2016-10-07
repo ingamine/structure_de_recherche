@@ -2,18 +2,18 @@
 
 namespace GestionAdministrative\LgmBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Doctorant
+ * Enseignant_Chercheur
  *
- * @ORM\Table(name="doctorant")
- * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\DoctorantRepository")
+ * @ORM\Table(name="enseignant__chercheur")
+ * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\Enseignant_ChercheurRepository")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
-class Doctorant
+class Enseignant_Chercheur
 {
     /**
      * @var int
@@ -25,155 +25,128 @@ class Doctorant
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="grade", type="string", length=255)
-     */
-    private $grade;
-   /**
      * @var int
-     * 
-     * @ORM\Column(name="cINDoctorant", type="integer", nullable=false)
+     *
+     * @ORM\Column(name="CIN_EnseigCh", type="integer")
+     * @var ArrayCollection $etudiants
+     *
      */
-    private $cINDoctorant;
+    private $cINEnseigCh;
 
     /**
-     * @ORM\Column(name="nom", type="string", nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="prenom", type="string", nullable=true)
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="nomJeuneFille", type="string", nullable=true)
+     *
+     * @ORM\Column(name="nom_jeune_fille", type="string", length=255)
      */
     private $nomJeuneFille;
 
     /**
-     * @var string $dateNaiss
+     * @var \DateTime
      *
-     * @ORM\Column(name="dateNaiss", type="date", nullable=true)
+     * @ORM\Column(name="date_naiss", type="date")
      */
     private $dateNaiss;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="lieuNaiss", type="string", nullable=true)
+     *
+     * @ORM\Column(name="lieu_naiss", type="string", length=255)
      */
     private $lieuNaiss;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="sexe", type="string", nullable=true)
+     *
+     * @ORM\Column(name="sexe", type="string", length=255)
      */
     private $sexe;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="grade", type="string", length=255)
+     */
+    private $grade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etablisement", type="string", length=255)
+     */
+    private $etablisement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fonction", type="string", length=255)
+     */
+    private $fonction;
+
+    /**
      * @var int
-     * 
-     * @ORM\Column(name="telMob", type="integer", nullable=true)
+     *
+     * @ORM\Column(name="tel_mob", type="integer")
      */
     private $telMob;
 
     /**
      * @var int
-     * 
-     *@ORM\Column(name="telFixe", type="integer", nullable=true)
+     *
+     * @ORM\Column(name="tel_fixe", type="integer")
      */
     private $telFixe;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="eMail", type="string", nullable=true)
+     *
+     * @ORM\Column(name="e_mail", type="string", length=255)
      */
     private $eMail;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="dernierDepObtenu", type="string", nullable=true)
+     *
+     * @ORM\Column(name="dernier_dep_obtenu", type="string", length=255)
      */
     private $dernierDepObtenu;
 
     /**
      * @var \DateTime
-     * 
-     * @ORM\Column(name="dateDepObtenu", type="date", nullable=true)
+     *
+     * @ORM\Column(name="date_dep_obtenu", type="date")
      */
     private $dateDepObtenu;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(name="etabDepObtenu", type="string", nullable=true)
+     *
+     * @ORM\Column(name="etab_dep_obtenu", type="string", length=255)
      */
     private $etabDepObtenu;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="codeStructure", type="string", nullable=true)
+     * @var int
+     *
+     * @ORM\Column(name="code_structure", type="integer")
      */
     private $codeStructure;
 
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="intituleSujet", type="string", nullable=true)
-     */
-    private $intituleSujet;
-
-    /**
-     * @var int
-     * 
-     * @ORM\Column(name="tauxAvancement", type="integer", nullable=true)
-     */
-    private $tauxAvancement;
-
-    /**
-     * @var \DateTime
-     * 
-     * @ORM\Column(name="anneePremierInscrip", type="date", nullable=true)
-     */
-    private $anneePremierInscrip;
-
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="etbInscrip", type="string", nullable=true)
-     */
-    private $etbInscrip;
-
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="etabInscrip2", type="string", nullable=true)
-     */
-    private $etabInscrip2;
-
-      
-         
     
-    /**
-     * @var int
-     * @ORM\Column(name="cinEncad", type="integer", nullable=false)
-     * 
-     */
-     
-    private $cinEncad;
     
-      
-
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
@@ -185,22 +158,14 @@ class Doctorant
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
-    
+
     /**
      * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
     
-    
-    
-  
-    
-    
-    
-    
-    
-    
-    /**
+       
+   /**
      * Get created
      *
      * @return \DateTime 
@@ -210,7 +175,7 @@ class Doctorant
         return $this->created;
     }
 
-    
+ 
     /**
      * Get updated
      *
@@ -224,8 +189,8 @@ class Doctorant
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
-     * @return Doctorant
+     * @param string $deletedAt
+     * @return User
      */
     public function setDeletedAt($deletedAt)
     {
@@ -233,34 +198,54 @@ class Doctorant
 
         return $this;
     }
+    
     /**
-     * Set cINDoctorant
-     *
-     * @param integer $cINDoctorant
-     * @return doctorant
+     * Constructor
      */
-    public function setCINDoctorant($cINDoctorant)
+    public function __construct()
     {
-        $this->cINDoctorant = $cINDoctorant;
+        $this->enseignant_Chercheur = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+      
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cINEnseigCh
+     *
+     * @param integer $cINEnseigCh
+     * @return Enseignant_Chercheur
+     */
+    public function setCINEnseigCh($cINEnseigCh)
+    {
+        $this->cINEnseigCh = $cINEnseigCh;
 
         return $this;
     }
 
     /**
-     * Get cINDoctorant
+     * Get cINEnseigCh
      *
      * @return integer 
      */
-    public function getCINDoctorant()
+    public function getCINEnseigCh()
     {
-        return $this->cINDoctorant;
+        return $this->cINEnseigCh;
     }
 
     /**
      * Set nom
      *
      * @param string $nom
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setNom($nom)
     {
@@ -283,7 +268,7 @@ class Doctorant
      * Set prenom
      *
      * @param string $prenom
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setPrenom($prenom)
     {
@@ -306,7 +291,7 @@ class Doctorant
      * Set nomJeuneFille
      *
      * @param string $nomJeuneFille
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setNomJeuneFille($nomJeuneFille)
     {
@@ -329,7 +314,7 @@ class Doctorant
      * Set dateNaiss
      *
      * @param \DateTime $dateNaiss
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setDateNaiss($dateNaiss)
     {
@@ -352,7 +337,7 @@ class Doctorant
      * Set lieuNaiss
      *
      * @param string $lieuNaiss
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setLieuNaiss($lieuNaiss)
     {
@@ -375,7 +360,7 @@ class Doctorant
      * Set sexe
      *
      * @param string $sexe
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setSexe($sexe)
     {
@@ -395,10 +380,79 @@ class Doctorant
     }
 
     /**
+     * Set grade
+     *
+     * @param string $grade
+     * @return Enseignant_Chercheur
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Get grade
+     *
+     * @return string 
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    /**
+     * Set etablisement
+     *
+     * @param string $etablisement
+     * @return Enseignant_Chercheur
+     */
+    public function setEtablisement($etablisement)
+    {
+        $this->etablisement = $etablisement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablisement
+     *
+     * @return string 
+     */
+    public function getEtablisement()
+    {
+        return $this->etablisement;
+    }
+
+    /**
+     * Set fonction
+     *
+     * @param string $fonction
+     * @return Enseignant_Chercheur
+     */
+    public function setFonction($fonction)
+    {
+        $this->fonction = $fonction;
+
+        return $this;
+    }
+
+    /**
+     * Get fonction
+     *
+     * @return string 
+     */
+    public function getFonction()
+    {
+        return $this->fonction;
+    }
+
+    /**
      * Set telMob
      *
-     * @param string $telMob
-     * @return doctorant
+     * @param integer $telMob
+     * @return Enseignant_Chercheur
      */
     public function setTelMob($telMob)
     {
@@ -410,7 +464,7 @@ class Doctorant
     /**
      * Get telMob
      *
-     * @return string 
+     * @return integer 
      */
     public function getTelMob()
     {
@@ -420,8 +474,8 @@ class Doctorant
     /**
      * Set telFixe
      *
-     * @param string $telFixe
-     * @return doctorant
+     * @param integer $telFixe
+     * @return Enseignant_Chercheur
      */
     public function setTelFixe($telFixe)
     {
@@ -433,7 +487,7 @@ class Doctorant
     /**
      * Get telFixe
      *
-     * @return string 
+     * @return integer 
      */
     public function getTelFixe()
     {
@@ -444,7 +498,7 @@ class Doctorant
      * Set eMail
      *
      * @param string $eMail
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setEMail($eMail)
     {
@@ -467,7 +521,7 @@ class Doctorant
      * Set dernierDepObtenu
      *
      * @param string $dernierDepObtenu
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setDernierDepObtenu($dernierDepObtenu)
     {
@@ -490,7 +544,7 @@ class Doctorant
      * Set dateDepObtenu
      *
      * @param \DateTime $dateDepObtenu
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setDateDepObtenu($dateDepObtenu)
     {
@@ -513,7 +567,7 @@ class Doctorant
      * Set etabDepObtenu
      *
      * @param string $etabDepObtenu
-     * @return doctorant
+     * @return Enseignant_Chercheur
      */
     public function setEtabDepObtenu($etabDepObtenu)
     {
@@ -535,8 +589,8 @@ class Doctorant
     /**
      * Set codeStructure
      *
-     * @param string $codeStructure
-     * @return doctorant
+     * @param integer $codeStructure
+     * @return Enseignant_Chercheur
      */
     public function setCodeStructure($codeStructure)
     {
@@ -548,7 +602,7 @@ class Doctorant
     /**
      * Get codeStructure
      *
-     * @return string 
+     * @return integer 
      */
     public function getCodeStructure()
     {
@@ -556,181 +610,10 @@ class Doctorant
     }
 
     /**
-     * Set intituleSujet
-     *
-     * @param string $intituleSujet
-     * @return doctorant
-     */
-    public function setIntituleSujet($intituleSujet)
-    {
-        $this->intituleSujet = $intituleSujet;
-
-        return $this;
-    }
-
-    /**
-     * Get intituleSujet
-     *
-     * @return string 
-     */
-    public function getIntituleSujet()
-    {
-        return $this->intituleSujet;
-    }
-
-    /**
-     * Set tauxAvancement
-     *
-     * @param integer $tauxAvancement
-     * @return doctorant
-     */
-    public function setTauxAvancement($tauxAvancement)
-    {
-        $this->tauxAvancement = $tauxAvancement;
-
-        return $this;
-    }
-
-    /**
-     * Get tauxAvancement
-     *
-     * @return integer 
-     */
-    public function getTauxAvancement()
-    {
-        return $this->tauxAvancement;
-    }
-
-    /**
-     * Set anneePremierInscrip
-     *
-     * @param \DateTime $anneePremierInscrip
-     * @return doctorant
-     */
-    public function setAnneePremierInscrip($anneePremierInscrip)
-    {
-        $this->anneePremierInscrip = $anneePremierInscrip;
-
-        return $this;
-    }
-
-    /**
-     * Get anneePremierInscrip
-     *
-     * @return \DateTime 
-     */
-    public function getAnneePremierInscrip()
-    {
-        return $this->anneePremierInscrip;
-    }
-
-    /**
-     * Set etbInscrip
-     *
-     * @param string $etbInscrip
-     * @return doctorant
-     */
-    public function setEtbInscrip($etbInscrip)
-    {
-        $this->etbInscrip = $etbInscrip;
-
-        return $this;
-    }
-
-    /**
-     * Get etbInscrip
-     *
-     * @return string 
-     */
-    public function getEtbInscrip()
-    {
-        return $this->etbInscrip;
-    }
-
-    /**
-     * Set etabInscrip2
-     *
-     * @param string $etabInscrip2
-     * @return doctorant
-     */
-    public function setEtabInscrip2($etabInscrip2)
-    {
-        $this->etabInscrip2 = $etabInscrip2;
-
-        return $this;
-    }
-
-    /**
-     * Get etabInscrip2
-     *
-     * @return string 
-     */
-    public function getEtabInscrip2()
-    {
-        return $this->etabInscrip2;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set grade
-     *
-     * @param string $grade
-     * @return Doctorant
-     */
-    public function setGrade($grade)
-    {
-        $this->grade = $grade;
-
-        return $this;
-    }
-
-    /**
-     * Get grade
-     *
-     * @return string 
-     */
-    public function getGrade()
-    {
-        return $this->grade;
-    }
-
-    /**
-     * Set cinEncad
-     *
-     * @param integer $cinEncad
-     * @return Doctorant
-     */
-    public function setCinEncad($cinEncad)
-    {
-        $this->cinEncad = $cinEncad;
-
-        return $this;
-    }
-
-    /**
-     * Get cinEncad
-     *
-     * @return integer 
-     */
-    public function getCinEncad()
-    {
-        return $this->cinEncad;
-    }
-
-    /**
      * Set created
      *
      * @param \DateTime $created
-     * @return Doctorant
+     * @return Enseignant_Chercheur
      */
     public function setCreated($created)
     {
@@ -743,7 +626,7 @@ class Doctorant
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Doctorant
+     * @return Enseignant_Chercheur
      */
     public function setUpdated($updated)
     {
@@ -762,16 +645,45 @@ class Doctorant
         return $this->deletedAt;
     }
 
-    
-    
+    /**
+     * Add etudiants
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants
+     * @return Enseignant_Chercheur
+     */
+    public function addEtudiant(\GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants)
+    {
+        $this->etudiants[] = $etudiants;
+
+        return $this;
+    }
+
+    /**
+     * Remove etudiants
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants
+     */
+    public function removeEtudiant(\GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants)
+    {
+        $this->etudiants->removeElement($etudiants);
+    }
+
+    /**
+     * Get etudiants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEtudiants()
+    {
+        return $this->etudiants;
+    }
     
     public function __toString()
     {
-      
-        return $this->getNom();
-        
+       
+        return $this->getNom();    
     }
     
     
-       
+    
 }

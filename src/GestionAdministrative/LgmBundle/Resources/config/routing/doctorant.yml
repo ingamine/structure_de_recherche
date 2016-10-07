@@ -1,0 +1,24 @@
+doctorant_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Doctorant:index" }
+    methods:  GET
+
+doctorant_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Doctorant:show" }
+    methods:  GET
+
+doctorant_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Doctorant:new" }
+    methods:  [GET, POST]
+
+doctorant_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Doctorant:edit" }
+    methods:  [GET, POST]
+
+doctorant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Doctorant:delete" }
+    methods:  DELETE

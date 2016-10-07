@@ -1,5 +1,5 @@
-lgm_doctorant:
-    resource: "@LgmBundle/Controller/DoctorantController.php"
+lgm_cadre.equivalant:
+    resource: "@LgmBundle/Controller/Cadre_equivalantController.php"
     type:     annotation
 
 lgm:
