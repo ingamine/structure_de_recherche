@@ -35,7 +35,7 @@ class DoctorantType extends AbstractType
             ->add('anneePremierInscrip', 'date')
             ->add('etbInscrip')
             ->add('etabInscrip2')
-            ->add('cinEncad')
+            ->add('encadreur')
         ;
     }
     

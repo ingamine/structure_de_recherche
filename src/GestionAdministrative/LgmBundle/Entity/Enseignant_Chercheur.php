@@ -28,11 +28,11 @@ class Enseignant_Chercheur
      * @var int
      *
      * @ORM\Column(name="CIN_EnseigCh", type="integer")
-     * @var ArrayCollection $etudiants
-     *
+     * 
      */
-    private $cINEnseigCh;
+    private  $cINEnseigCh;
 
+    
     /**
      * @var string
      *
@@ -164,7 +164,11 @@ class Enseignant_Chercheur
      */
     private $deletedAt;
     
-       
+    
+      
+    
+    
+    
    /**
      * Get created
      *
@@ -207,7 +211,10 @@ class Enseignant_Chercheur
         $this->enseignant_Chercheur = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-      
+    
+    
+    
+
     /**
      * Get id
      *
@@ -645,45 +652,91 @@ class Enseignant_Chercheur
         return $this->deletedAt;
     }
 
+   
+    
+    public function __toString()
+    {
+        return strval($this->id);
+    }
+    
+    
+
     /**
-     * Add etudiants
+     * Set doctorants
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants
+     * @param \GestionAdministrative\LgmBundle\Entity\Doctorant $doctorants
      * @return Enseignant_Chercheur
      */
-    public function addEtudiant(\GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants)
+    public function setDoctorants(\GestionAdministrative\LgmBundle\Entity\Doctorant $doctorants)
     {
-        $this->etudiants[] = $etudiants;
+        $this->doctorants = $doctorants;
 
         return $this;
     }
 
     /**
-     * Remove etudiants
+     * Get doctorants
      *
-     * @param \GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants
+     * @return \GestionAdministrative\LgmBundle\Entity\Doctorant 
      */
-    public function removeEtudiant(\GestionAdministrative\LgmBundle\Entity\Doctorant $etudiants)
+    public function getDoctorants()
     {
-        $this->etudiants->removeElement($etudiants);
+        return $this->doctorants;
     }
 
     /**
-     * Get etudiants
+     * Add doctorant
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\doctorant $doctorant
+     * @return Enseignant_Chercheur
+     */
+    public function addDoctorant(\GestionAdministrative\LgmBundle\Entity\doctorant $doctorant)
+    {
+        $this->doctorant[] = $doctorant;
+
+        return $this;
+    }
+
+    /**
+     * Remove doctorant
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\doctorant $doctorant
+     */
+    public function removeDoctorant(\GestionAdministrative\LgmBundle\Entity\doctorant $doctorant)
+    {
+        $this->doctorant->removeElement($doctorant);
+    }
+
+    /**
+     * Get doctorant
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getEtudiants()
+    public function getDoctorant()
     {
-        return $this->etudiants;
+        return $this->doctorant;
     }
-    
-    public function __toString()
+
+    /**
+     * Set encadreur
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur
+     * @return Enseignant_Chercheur
+     */
+    public function setEncadreur(\GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur = null)
     {
-       
-        return $this->getNom();    
+        $this->encadreur = $encadreur;
+
+        return $this;
     }
-    
-    
-    
+
+    /**
+     * Get encadreur
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur 
+     */
+    public function getEncadreur()
+    {
+        return $this->encadreur;
+    }
 }

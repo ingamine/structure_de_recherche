@@ -14,7 +14,7 @@
         <div class="box-header with-border">
             <h3 class="box-title text-uppercase">Liste des Doctorant LGM</h3>
             <span class="pull-right">
-                <a href="{{ path('user_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+                <a href="{{ path('doctorant_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
             </span>
         </div>
 
@@ -71,17 +71,20 @@
                 <td>{{ doctorant.cINDoctorant }}</td>
                 <td>{{ doctorant.nom }}</td>
                 <td>{{ doctorant.prenom }}</td>
-                <td>{{ doctorant.cinEncad }}</td>
                 
                 
                 
-                  {#
                 
-                {% for unTag in doctorant.cinEncad %}
+                <td>{{ doctorant.encadreur }}  </td>
+                
+                {#
+                
+                
+                {% for unTag in doctorant.encadrant %}
                     <td>{{ unTag }}</td>
                 {% endfor %}
                
-              
+                
                 <td>{% if doctorant.dateNaiss %}{{ doctorant.dateNaiss|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ doctorant.lieuNaiss }}</td>
                 <td>{{ doctorant.sexe }}</td>

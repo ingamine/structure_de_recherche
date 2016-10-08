@@ -161,19 +161,26 @@ class Doctorant
      */
     private $etabInscrip2;
 
-      
-         
     
-    /**
+   /**
      * @var int
      * @ORM\Column(name="cinEncad", type="integer", nullable=false)
      * 
      */
-     
+	
     private $cinEncad;
     
-      
-
+    /** 
+      * @ORM\ManyToOne(targetEntity="Enseignant_Chercheur", inversedBy="doctorant") 
+      * 
+      */
+    private $encadreur;
+    
+	
+	
+       
+         
+    
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
@@ -191,10 +198,8 @@ class Doctorant
      */
     private $deletedAt;
     
-    
-    
-  
-    
+
+   
     
     
     
@@ -762,8 +767,7 @@ class Doctorant
         return $this->deletedAt;
     }
 
-    
-    
+     
     
     public function __toString()
     {
@@ -773,5 +777,30 @@ class Doctorant
     }
     
     
-       
+    
+
+  
+
+    /**
+     * Set encadreur
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur
+     * @return Doctorant
+     */
+    public function setEncadreur(\GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur = null)
+    {
+        $this->encadreur = $encadreur;
+
+        return $this;
+    }
+
+    /**
+     * Get encadreur
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur 
+     */
+    public function getEncadreur()
+    {
+        return $this->encadreur;
+    }
 }

@@ -1,0 +1,93 @@
+<?php
+
+namespace GestionAdministrative\LgmBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Mastere
+ *
+ * @ORM\Table(name="mastere", indexes={@ORM\Index(name="FKMastere631585", columns={"etablissementid"})})
+ * @ORM\Entity
+ */
+class Mastere
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_date_registered", type="string", length=255, nullable=true)
+     */
+    private $firstDateRegistered;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Etablissement
+     *
+     * @ORM\ManyToOne(targetEntity="Etablissement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="etablissementid", referencedColumnName="id")
+     * })
+     */
+    private $etablissementid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="mastereid")
+     * @ORM\JoinTable(name="mastere_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Mastereid", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="UserId", referencedColumnName="Id")
+     *   }
+     * )
+     */
+    private $userid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->userid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

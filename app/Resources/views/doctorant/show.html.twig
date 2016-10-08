@@ -96,8 +96,12 @@
                 <td>{{ doctorant.etabInscrip2 }}</td>
             </tr>
             <tr>
-                <th>Cinencad</th>
-                <td>{{ doctorant.cinEncad }}</td>
+                <th>Encadreur</th>
+                {% if doctorant.cinEncad %}
+                
+                <td>{{ doctorant.encadreur.nom}} {{ doctorant.encadreur.prenom}} </td>
+                
+                {%endif %}
             </tr>
             
             
