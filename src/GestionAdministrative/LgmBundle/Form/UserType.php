@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 class UserType extends AbstractType
 {
     /**
@@ -63,6 +64,19 @@ class UserType extends AbstractType
             ->add('ProductionScientifique')
             ->add('ResearchTeam')
             ->add('Structure')
+                
+            ->add('imageFile', 'vich_image', array(
+                                            'required'      => false,
+                                            'allow_delete'  => true, // not mandatory, default is true
+                                            'download_link' => true, // not mandatory, default is true
+                
+                
+                
+                
+                
+        ));    
+                
+                
         ;
     }
     

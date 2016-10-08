@@ -1,0 +1,126 @@
+{% extends('::base.html.twig') %}
+
+{% block body %}
+    
+    
+    
+    <div class="responsive-table-line" style="border: 5px solid #ccc;
+         margin:0px auto;
+         max-width:800px;
+         border-collapse: collapse;">
+
+     <table class="table table-bordered table-body-center" >
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ doctorant.id }}</td>
+            </tr>
+            <tr>
+                <th>Grade</th>
+                <td>{{ doctorant.grade }}</td>
+            </tr>
+            <tr>
+                <th>Cindoctorant</th>
+                <td>{{ doctorant.cINDoctorant }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ doctorant.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ doctorant.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Nomjeunefille</th>
+                <td>{{ doctorant.nomJeuneFille }}</td>
+            </tr>
+            <tr>
+                <th>Datenaiss</th>
+                <td>{% if doctorant.dateNaiss %}{{ doctorant.dateNaiss|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieunaiss</th>
+                <td>{{ doctorant.lieuNaiss }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ doctorant.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Telmob</th>
+                <td>{{ doctorant.telMob }}</td>
+            </tr>
+            <tr>
+                <th>Telfixe</th>
+                <td>{{ doctorant.telFixe }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ doctorant.eMail }}</td>
+            </tr>
+            <tr>
+                <th>Dernierdepobtenu</th>
+                <td>{{ doctorant.dernierDepObtenu }}</td>
+            </tr>
+            <tr>
+                <th>Datedepobtenu</th>
+                <td>{% if doctorant.dateDepObtenu %}{{ doctorant.dateDepObtenu|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etabdepobtenu</th>
+                <td>{{ doctorant.etabDepObtenu }}</td>
+            </tr>
+            <tr>
+                <th>Codestructure</th>
+                <td>{{ doctorant.codeStructure }}</td>
+            </tr>
+            <tr>
+                <th>Intitulesujet</th>
+                <td>{{ doctorant.intituleSujet }}</td>
+            </tr>
+            <tr>
+                <th>Tauxavancement</th>
+                <td>{{ doctorant.tauxAvancement }}</td>
+            </tr>
+            <tr>
+                <th>Anneepremierinscrip</th>
+                <td>{% if doctorant.anneePremierInscrip %}{{ doctorant.anneePremierInscrip|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etbinscrip</th>
+                <td>{{ doctorant.etbInscrip }}</td>
+            </tr>
+            <tr>
+                <th>Etabinscrip2</th>
+                <td>{{ doctorant.etabInscrip2 }}</td>
+            </tr>
+            <tr>
+                <th>Encadreur</th>
+                {% if doctorant.cinEncad %}
+                
+                <td>{{ doctorant.encadreur.nom}} {{ doctorant.encadreur.prenom}} </td>
+                
+                {%endif %}
+            </tr>
+            
+            
+            
+        </tbody>
+    </table>
+
+    <ul>
+        <a class="btn btn-warning btn-sm" href="{{ path('doctorant_edit', { 'id': doctorant.id }) }}">
+            <i class="fa fa-cog"></i> Edit</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('doctorant_delete', { 'id': doctorant.id }) }}">
+            <i class="fa fa-trash-o fa-lg"></i> Delete </a>
+        
+               
+        <a class="btn btn-primary" href="{{ path('doctorant_index') }}" aria-label="Skip to main navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        
+           
+            
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+cadre_equivalant_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Cadre_equivalant:index" }
+    methods:  GET
+
+cadre_equivalant_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Cadre_equivalant:show" }
+    methods:  GET
+
+cadre_equivalant_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Cadre_equivalant:new" }
+    methods:  [GET, POST]
+
+cadre_equivalant_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Cadre_equivalant:edit" }
+    methods:  [GET, POST]
+
+cadre_equivalant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Cadre_equivalant:delete" }
+    methods:  DELETE

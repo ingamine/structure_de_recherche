@@ -1,0 +1,24 @@
+enseignant_chercheur_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Enseignant_Chercheur:index" }
+    methods:  GET
+
+enseignant_chercheur_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Enseignant_Chercheur:show" }
+    methods:  GET
+
+enseignant_chercheur_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Enseignant_Chercheur:new" }
+    methods:  [GET, POST]
+
+enseignant_chercheur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Enseignant_Chercheur:edit" }
+    methods:  [GET, POST]
+
+enseignant_chercheur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Enseignant_Chercheur:delete" }
+    methods:  DELETE

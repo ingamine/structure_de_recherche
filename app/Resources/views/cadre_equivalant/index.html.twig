@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cadre_equivalant list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Qualite</th>
+                <th>Cincequivalant</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Codestructure</th>
+                <th>Etab</th>
+                <th>Date_naissance</th>
+                <th>Lieu_naissance</th>
+                <th>Tel_mob</th>
+                <th>Tel_fixe</th>
+                <th>E_mail</th>
+                <th>Dernier_diplome_obtenu</th>
+                <th>Date_dernier_dip_obtenu</th>
+                <th>Etabdepobtenu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cadre_equivalant in cadre_equivalants %}
+            <tr>
+                <td><a href="{{ path('cadre_equivalant_show', { 'id': cadre_equivalant.id }) }}">{{ cadre_equivalant.id }}</a></td>
+                <td>{{ cadre_equivalant.qualite }}</td>
+                <td>{{ cadre_equivalant.cINCEquivalant }}</td>
+                <td>{{ cadre_equivalant.nom }}</td>
+                <td>{{ cadre_equivalant.prenom }}</td>
+                <td>{{ cadre_equivalant.codeStructure }}</td>
+                <td>{{ cadre_equivalant.etab }}</td>
+                <td>{% if cadre_equivalant.datenaissance %}{{ cadre_equivalant.datenaissance|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ cadre_equivalant.lieunaissance }}</td>
+                <td>{{ cadre_equivalant.telmob }}</td>
+                <td>{{ cadre_equivalant.telfixe }}</td>
+                <td>{{ cadre_equivalant.email }}</td>
+                <td>{{ cadre_equivalant.dernierdiplomeobtenu }}</td>
+                <td>{% if cadre_equivalant.datedernierdipobtenu %}{{ cadre_equivalant.datedernierdipobtenu|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ cadre_equivalant.etabDepObtenu }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cadre_equivalant_show', { 'id': cadre_equivalant.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cadre_equivalant_edit', { 'id': cadre_equivalant.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cadre_equivalant_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

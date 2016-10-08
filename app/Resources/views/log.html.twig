@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LGM Login Form </title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ asset('public/assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/assets/font-awesome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/style.css')}}">
+        
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+            <!-- Ionicons -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+            <!-- Bootstrap 3.3.6 -->
+            <link rel="stylesheet" href="{{ asset('public/bootstrap/css/bootstrap.min.css')}}">
+            <!-- DataTables -->
+            <link rel="stylesheet" href="{{ asset('public/plugins/datatables/dataTables.bootstrap.css')}}">
+            <!-- Theme style -->
+            <link rel="stylesheet" href="{{ asset('public/dist/css/AdminLTE.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('public/dist/css/skins/_all-skins.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('public/dist/css/skins/skin-blue.min.css')}}">
+        
+        
+        
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')}}"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')}}"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{{ asset('public/assets/ico/favicon.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('public/assets/ico/apple-touch-icon-144-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('public/assets/ico/apple-touch-icon-114-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('public/assets/ico/apple-touch-icon-72-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('public/assets/ico/apple-touch-icon-57-precomposed.png')}}">
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+            <div class="login-logo">
+                <img src="{{ asset('public/dist/img/enim.jpg')}}" class="img-lg" alt="logo ENIM" style="top: 8px;
+                                                                                        left: 16px;
+                                                                                        position: absolute;"> 
+                <img src="{{ asset('public/dist/img/LGM.png')}}" class="img-lg" alt="logo LGM" style="top: 8px;
+                                                                                        right: 16px;
+                                                                                        position: absolute;"> 
+            </div>
+        {% block body %}
+
+        {% endblock %}
+
+
+        <!-- Javascript -->
+        <script src="{{ asset('public/assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{ asset('public/assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('public/assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{ asset('public/assets/js/scripts.js')}}"></script>
+
+
+        <script src="{{ asset('public/assets/js/placeholder.js')}}"></script>
+        <div class="backstretch" style="left: 0px; top: 0px;
+                                        overflow: hidden; 
+                                        margin: 0px; 
+                                        padding: 0px; 
+                                        height: 863px; 
+                                        width: 1608px; 
+                                        z-index: -999999; 
+                                        position: fixed;">
+          <img src="{{ asset('public/assets/img/backgrounds/1@2x.jpg')}}" 
+                                style=" position: absolute; 
+                                        margin: 0px; 
+                                        padding: 0px; 
+                                        border: none; 
+                                        width: 1608px; 
+                                        height: 1072px; 
+                                        max-height: none; 
+                                        max-width: none; 
+                                        z-index: -999999; 
+                                        left: 0px; 
+                                        top: -104.5px;">
+        </div>
+   <script src="{{ asset('public/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+    <!-- Bootstrap 3.3.6 -->
+   <script src="{{ asset('public/bootstrap/js/bootstrap.min.js')}}"></script>
+     <!-- iCheck -->
+   <script src="{{ asset('public/plugins/iCheck/icheck.min.js')}}"></script>
+   <script>
+     $(function () {
+       $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+         increaseArea: '20%' // optional
+           });
+           });
+    </script>                     
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+    </body>
+
+</html>
+
+
+
+

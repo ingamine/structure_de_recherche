@@ -1,0 +1,24 @@
+groupes_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Groupes:index" }
+    methods:  GET
+
+groupes_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Groupes:show" }
+    methods:  GET
+
+groupes_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Groupes:new" }
+    methods:  [GET, POST]
+
+groupes_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Groupes:edit" }
+    methods:  [GET, POST]
+
+groupes_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Groupes:delete" }
+    methods:  DELETE

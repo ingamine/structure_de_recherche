@@ -1,0 +1,226 @@
+<?php
+
+namespace GestionAdministrative\LgmBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="FKUser738024", columns={"Groupeid"}), @ORM\Index(name="FKUser512253", columns={"structureid"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_name", type="integer", nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", length=255, nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthday", type="date", nullable=true)
+     */
+    private $birthday;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="birth_place", type="string", length=255, nullable=true)
+     */
+    private $birthPlace;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="phone_number", type="integer", nullable=true)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="grade", type="string", length=255, nullable=true)
+     */
+    private $grade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profile", type="string", length=255, nullable=true)
+     */
+    private $profile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="document_id", type="string", length=255, nullable=true)
+     */
+    private $documentId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo_id", type="string", length=255, nullable=true)
+     */
+    private $photoId;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="directeur", type="boolean", nullable=true)
+     */
+    private $directeur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="co_directeur", type="boolean", nullable=true)
+     */
+    private $coDirecteur;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="effectue", type="boolean", nullable=true)
+     */
+    private $effectue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="media_id", type="integer", nullable=true)
+     */
+    private $mediaId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="date", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="date", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="date", nullable=false)
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Structure
+     *
+     * @ORM\ManyToOne(targetEntity="Structure")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="structureid", referencedColumnName="id")
+     * })
+     */
+    private $structureid;
+
+    /**
+     * @var \Group
+     *
+     * @ORM\ManyToOne(targetEntity="Group")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Groupeid", referencedColumnName="id")
+     * })
+     */
+    private $groupeid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Habilitation", mappedBy="userid")
+     */
+    private $habilitationid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Mastere", mappedBy="userid")
+     */
+    private $mastereid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="ProductionScientifique", mappedBy="userid")
+     */
+    private $productionScientifiqueid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="ResearchTeam", mappedBy="userid")
+     */
+    private $researchTeamid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="These", mappedBy="userid")
+     */
+    private $theseid;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Soutenance", mappedBy="userid")
+     */
+    private $soutenanceid;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->habilitationid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mastereid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productionScientifiqueid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->researchTeamid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->theseid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->soutenanceid = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

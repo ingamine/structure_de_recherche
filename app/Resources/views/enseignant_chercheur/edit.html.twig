@@ -1,0 +1,29 @@
+{% extends('::base.html.twig') %}
+
+
+{% block body %}
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title">Modifier un Enseignant_Chercheur</h3>
+            <span class="pull-right">
+                {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger text-uppercase"/>Supprimer</button>
+                {{ form_end(delete_form) }}
+            </span>
+        </div>
+
+        <div class="box-body">
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <span class="pull-right">
+            <a href="{{ path('enseignant_chercheur_index') }}" class="btn btn-default text-uppercase">Annuler</a>
+            <button type="submit" class="btn btn-success text-uppercase"/><i class="fa fa-check"></i> Modifier</button>
+        </span>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

@@ -28,6 +28,16 @@ lgm_structure:
 lgm_these:
         resource: "@LgmBundle/Resources/config/routing/these.yml"
         prefix:   /these
+lgm_doctorant:
+        resource: "@LgmBundle/Resources/config/routing/doctorant.yml"
+        prefix:   /doctorant
+lgm_enseignant_chercheur:
+        resource: "@LgmBundle/Resources/config/routing/enseignant_chercheur.yml"
+        prefix:   /enseignant_chercheur
+lgm_cadre_equivalant:
+        resource: "@LgmBundle/Resources/config/routing/cadre_equivalant.yml"
+        prefix:   /cadre_equivalant
 lgm_homepage:
     path:     /
     defaults: { _controller: LgmBundle:Default:index }
+

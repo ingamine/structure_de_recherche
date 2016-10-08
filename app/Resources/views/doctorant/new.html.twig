@@ -1,0 +1,26 @@
+{% extends('::base.html.twig') %}
+
+{% block body %}
+<div class="box box-info box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ajouter un doctorant</h3>
+    </div>
+
+    <div class="box-body">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <span class="pull-right">
+            <a href="{{ path('doctorant_index') }}" class="btn btn-default text-uppercase">Annuler</a>
+            <button type="submit" class="btn btn-success text-uppercase"/><i class="fa fa-check"></i> Ajouter</button>
+        </span>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+

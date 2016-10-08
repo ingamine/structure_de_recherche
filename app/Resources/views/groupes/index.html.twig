@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td><a href="{{ path('groupes_show', { 'id': groupe.id }) }}">{{ groupe.id }}</a></td>
+                <td>{{ groupe.name }}</td>
+                <td>{% if groupe.created %}{{ groupe.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if groupe.updated %}{{ groupe.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groupes_show', { 'id': groupe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groupes_edit', { 'id': groupe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupes_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

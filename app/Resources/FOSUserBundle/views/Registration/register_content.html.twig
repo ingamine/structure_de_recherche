@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<body class="hold-transition register-page">
+<div class="register-box">
+  
+  <div class="register-box-body">
+    <p class="login-box-msg">Register a new membership</p>
+
+    
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+       <button type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" >Register 
+           <span class="glyphicon glyphicon-ok"></span></button>
+           
+      
+        
+    </div>
+{{ form_end(form) }}
+
+ 
+ </div>
+ </body>
+ 

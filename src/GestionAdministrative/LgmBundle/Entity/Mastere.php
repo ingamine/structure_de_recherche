@@ -211,4 +211,17 @@ class Mastere
        return $this->getTitle();
     }
 
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Mastere
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
 }
