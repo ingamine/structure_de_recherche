@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ouvrage list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Equipe</th>
+                <th>A1</th>
+                <th>A2</th>
+                <th>A3</th>
+                <th>A4</th>
+                <th>A5</th>
+                <th>A6</th>
+                <th>A7</th>
+                <th>A8</th>
+                <th>A9</th>
+                <th>A10</th>
+                <th>Website</th>
+                <th>Editeur</th>
+                <th>Isbn</th>
+                <th>Titre</th>
+                <th>Path</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ouvrage in ouvrages %}
+            <tr>
+                <td><a href="{{ path('ouvrage_show', { 'id': ouvrage.id }) }}">{{ ouvrage.id }}</a></td>
+                <td>{{ ouvrage.equipe }}</td>
+                <td>{{ ouvrage.a1 }}</td>
+                <td>{{ ouvrage.a2 }}</td>
+                <td>{{ ouvrage.a3 }}</td>
+                <td>{{ ouvrage.a4 }}</td>
+                <td>{{ ouvrage.a5 }}</td>
+                <td>{{ ouvrage.a6 }}</td>
+                <td>{{ ouvrage.a7 }}</td>
+                <td>{{ ouvrage.a8 }}</td>
+                <td>{{ ouvrage.a9 }}</td>
+                <td>{{ ouvrage.a10 }}</td>
+                <td>{{ ouvrage.webSite }}</td>
+                <td>{{ ouvrage.editeur }}</td>
+                <td>{{ ouvrage.ISBN }}</td>
+                <td>{{ ouvrage.titre }}</td>
+                <td>{{ ouvrage.path }}</td>
+                <td>{% if ouvrage.created %}{{ ouvrage.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if ouvrage.updated %}{{ ouvrage.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if ouvrage.deletedAt %}{{ ouvrage.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ouvrage_show', { 'id': ouvrage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ouvrage_edit', { 'id': ouvrage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ouvrage_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

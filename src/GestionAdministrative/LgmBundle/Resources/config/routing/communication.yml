@@ -1,0 +1,24 @@
+communication_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Communication:index" }
+    methods:  GET
+
+communication_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Communication:show" }
+    methods:  GET
+
+communication_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Communication:new" }
+    methods:  [GET, POST]
+
+communication_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Communication:edit" }
+    methods:  [GET, POST]
+
+communication_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Communication:delete" }
+    methods:  DELETE
