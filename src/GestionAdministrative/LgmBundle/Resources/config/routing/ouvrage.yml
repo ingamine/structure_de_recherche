@@ -1,0 +1,24 @@
+ouvrage_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Ouvrage:index" }
+    methods:  GET
+
+ouvrage_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Ouvrage:show" }
+    methods:  GET
+
+ouvrage_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Ouvrage:new" }
+    methods:  [GET, POST]
+
+ouvrage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Ouvrage:edit" }
+    methods:  [GET, POST]
+
+ouvrage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Ouvrage:delete" }
+    methods:  DELETE

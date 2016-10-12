@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ouvrage</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ouvrage.id }}</td>
+            </tr>
+            <tr>
+                <th>Equipe</th>
+                <td>{{ ouvrage.equipe }}</td>
+            </tr>
+            <tr>
+                <th>A1</th>
+                <td>{{ ouvrage.a1 }}</td>
+            </tr>
+            <tr>
+                <th>A2</th>
+                <td>{{ ouvrage.a2 }}</td>
+            </tr>
+            <tr>
+                <th>A3</th>
+                <td>{{ ouvrage.a3 }}</td>
+            </tr>
+            <tr>
+                <th>A4</th>
+                <td>{{ ouvrage.a4 }}</td>
+            </tr>
+            <tr>
+                <th>A5</th>
+                <td>{{ ouvrage.a5 }}</td>
+            </tr>
+            <tr>
+                <th>A6</th>
+                <td>{{ ouvrage.a6 }}</td>
+            </tr>
+            <tr>
+                <th>A7</th>
+                <td>{{ ouvrage.a7 }}</td>
+            </tr>
+            <tr>
+                <th>A8</th>
+                <td>{{ ouvrage.a8 }}</td>
+            </tr>
+            <tr>
+                <th>A9</th>
+                <td>{{ ouvrage.a9 }}</td>
+            </tr>
+            <tr>
+                <th>A10</th>
+                <td>{{ ouvrage.a10 }}</td>
+            </tr>
+            <tr>
+                <th>Website</th>
+                <td>{{ ouvrage.webSite }}</td>
+            </tr>
+            <tr>
+                <th>Editeur</th>
+                <td>{{ ouvrage.editeur }}</td>
+            </tr>
+            <tr>
+                <th>Isbn</th>
+                <td>{{ ouvrage.ISBN }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ ouvrage.titre }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ ouvrage.path }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if ouvrage.created %}{{ ouvrage.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if ouvrage.updated %}{{ ouvrage.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if ouvrage.deletedAt %}{{ ouvrage.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ouvrage_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ouvrage_edit', { 'id': ouvrage.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

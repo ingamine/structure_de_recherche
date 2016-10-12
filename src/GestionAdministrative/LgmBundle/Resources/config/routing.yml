@@ -37,6 +37,15 @@ lgm_enseignant_chercheur:
 lgm_cadre_equivalant:
         resource: "@LgmBundle/Resources/config/routing/cadre_equivalant.yml"
         prefix:   /cadre_equivalant
+lgm_article:
+        resource: "@LgmBundle/Resources/config/routing/article.yml"
+        prefix:   /article
+lgm_communication:
+        resource: "@LgmBundle/Resources/config/routing/communication.yml"
+        prefix:   /communication
+lgm_ouvrage:
+        resource: "@LgmBundle/Resources/config/routing/ouvrage.yml"
+        prefix:   /ouvrage
 lgm_homepage:
     path:     /
     defaults: { _controller: LgmBundle:Default:index }

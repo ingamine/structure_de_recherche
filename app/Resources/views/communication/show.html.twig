@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Communication</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ communication.id }}</td>
+            </tr>
+            <tr>
+                <th>Equipe</th>
+                <td>{{ communication.equipe }}</td>
+            </tr>
+            <tr>
+                <th>A1</th>
+                <td>{{ communication.a1 }}</td>
+            </tr>
+            <tr>
+                <th>A2</th>
+                <td>{{ communication.a2 }}</td>
+            </tr>
+            <tr>
+                <th>A3</th>
+                <td>{{ communication.a3 }}</td>
+            </tr>
+            <tr>
+                <th>A4</th>
+                <td>{{ communication.a4 }}</td>
+            </tr>
+            <tr>
+                <th>A5</th>
+                <td>{{ communication.a5 }}</td>
+            </tr>
+            <tr>
+                <th>A6</th>
+                <td>{{ communication.a6 }}</td>
+            </tr>
+            <tr>
+                <th>A7</th>
+                <td>{{ communication.a7 }}</td>
+            </tr>
+            <tr>
+                <th>A8</th>
+                <td>{{ communication.a8 }}</td>
+            </tr>
+            <tr>
+                <th>A9</th>
+                <td>{{ communication.a9 }}</td>
+            </tr>
+            <tr>
+                <th>A10</th>
+                <td>{{ communication.a10 }}</td>
+            </tr>
+            <tr>
+                <th>Conferance</th>
+                <td>{{ communication.conferance }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ communication.pays }}</td>
+            </tr>
+            <tr>
+                <th>Vol</th>
+                <td>{{ communication.vol }}</td>
+            </tr>
+            <tr>
+                <th>Num</th>
+                <td>{{ communication.num }}</td>
+            </tr>
+            <tr>
+                <th>Pp</th>
+                <td>{{ communication.pp }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ communication.titre }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ communication.path }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if communication.created %}{{ communication.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if communication.updated %}{{ communication.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if communication.deletedAt %}{{ communication.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('communication_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('communication_edit', { 'id': communication.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

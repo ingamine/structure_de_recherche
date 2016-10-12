@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Communication list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Equipe</th>
+                <th>A1</th>
+                <th>A2</th>
+                <th>A3</th>
+                <th>A4</th>
+                <th>A5</th>
+                <th>A6</th>
+                <th>A7</th>
+                <th>A8</th>
+                <th>A9</th>
+                <th>A10</th>
+                <th>Conferance</th>
+                <th>Pays</th>
+                <th>Vol</th>
+                <th>Num</th>
+                <th>Pp</th>
+                <th>Titre</th>
+                <th>Path</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for communication in communications %}
+            <tr>
+                <td><a href="{{ path('communication_show', { 'id': communication.id }) }}">{{ communication.id }}</a></td>
+                <td>{{ communication.equipe }}</td>
+                <td>{{ communication.a1 }}</td>
+                <td>{{ communication.a2 }}</td>
+                <td>{{ communication.a3 }}</td>
+                <td>{{ communication.a4 }}</td>
+                <td>{{ communication.a5 }}</td>
+                <td>{{ communication.a6 }}</td>
+                <td>{{ communication.a7 }}</td>
+                <td>{{ communication.a8 }}</td>
+                <td>{{ communication.a9 }}</td>
+                <td>{{ communication.a10 }}</td>
+                <td>{{ communication.conferance }}</td>
+                <td>{{ communication.pays }}</td>
+                <td>{{ communication.vol }}</td>
+                <td>{{ communication.num }}</td>
+                <td>{{ communication.pp }}</td>
+                <td>{{ communication.titre }}</td>
+                <td>{{ communication.path }}</td>
+                <td>{% if communication.created %}{{ communication.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if communication.updated %}{{ communication.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if communication.deletedAt %}{{ communication.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('communication_show', { 'id': communication.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('communication_edit', { 'id': communication.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('communication_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Equipe</th>
+                <td>{{ article.equipe }}</td>
+            </tr>
+            <tr>
+                <th>A1</th>
+                <td>{{ article.a1 }}</td>
+            </tr>
+            <tr>
+                <th>A2</th>
+                <td>{{ article.a2 }}</td>
+            </tr>
+            <tr>
+                <th>A3</th>
+                <td>{{ article.a3 }}</td>
+            </tr>
+            <tr>
+                <th>A4</th>
+                <td>{{ article.a4 }}</td>
+            </tr>
+            <tr>
+                <th>A5</th>
+                <td>{{ article.a5 }}</td>
+            </tr>
+            <tr>
+                <th>A6</th>
+                <td>{{ article.a6 }}</td>
+            </tr>
+            <tr>
+                <th>A7</th>
+                <td>{{ article.a7 }}</td>
+            </tr>
+            <tr>
+                <th>A8</th>
+                <td>{{ article.a8 }}</td>
+            </tr>
+            <tr>
+                <th>A9</th>
+                <td>{{ article.a9 }}</td>
+            </tr>
+            <tr>
+                <th>A10</th>
+                <td>{{ article.a10 }}</td>
+            </tr>
+            <tr>
+                <th>Journal</th>
+                <td>{{ article.journal }}</td>
+            </tr>
+            <tr>
+                <th>Indx</th>
+                <td>{{ article.indx }}</td>
+            </tr>
+            <tr>
+                <th>Vol</th>
+                <td>{{ article.vol }}</td>
+            </tr>
+            <tr>
+                <th>Num</th>
+                <td>{{ article.num }}</td>
+            </tr>
+            <tr>
+                <th>Pp</th>
+                <td>{{ article.pp }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ article.titre }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ article.path }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if article.updated %}{{ article.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if article.deletedAt %}{{ article.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('article_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

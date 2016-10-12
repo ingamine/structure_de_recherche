@@ -35,10 +35,13 @@ class DoctorantType extends AbstractType
             ->add('anneePremierInscrip', 'date')
             ->add('etbInscrip')
             ->add('etabInscrip2')
-            ->add('encadreur')
-        ;
+            ->add('cinEncad', 'entity', array('label' => 'CIN Directeur De Thèse',
+                                          'class' => 'GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur',
+                                          'property' => 'CIN_EnseigCh'
+                                         
+                ));
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
