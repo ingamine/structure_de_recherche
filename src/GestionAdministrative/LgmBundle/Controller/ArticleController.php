@@ -97,7 +97,7 @@ class ArticleController extends Controller
 
     /**
      * Displays a form to edit an existing Article entity.
-     * si je modifie any proprieté il faut que je ré upload le fichier en question  erreur 
+     * si je modifie any proprieté il faut que je ré upload le fichier en question ?? erreur 
      *
      */
     public function editAction(Request $request, Article $article)
