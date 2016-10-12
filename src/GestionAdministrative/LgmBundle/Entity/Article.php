@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * User
+ * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\ArticleRepository")
@@ -153,12 +153,27 @@ class Article
      */
     private $titre;
 
-    /**
-     * @var string
+  /**
+     * @ORM\Column(type="string")
      *
-     * @ORM\Column(name="path", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
      */
-    private $path;
+    private $brochure;
+    
+    
+
+    public function getBrochure()
+    {
+        return $this->brochure;
+    }
+
+    public function setBrochure($brochure)
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
 
 
     
@@ -586,28 +601,7 @@ class Article
         return $this->titre;
     }
 
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Article
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
+   
 
     /**
      * Set created
@@ -677,4 +671,8 @@ class Article
     {
         return $this->deletedAt;
     }
+
+    
+    
+    
 }

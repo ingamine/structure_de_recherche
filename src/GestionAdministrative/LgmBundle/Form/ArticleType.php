@@ -15,7 +15,10 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('equipe')
+            ->add('equipe','choice', array('choices' => array('PM'=>'Physique des matériaux',
+                                                              'IM'=>'Ingénierie mécanique',
+                                                              'SM'=>'Systèmes Mécaniques',
+                                                              'CMS'=>'Comportement des Matériaux et des Structures', )))
             ->add('a1')
             ->add('a2')
             ->add('a3')
@@ -32,10 +35,13 @@ class ArticleType extends AbstractType
             ->add('num')
             ->add('pp')
             ->add('titre')
-            ->add('path')
-            ->add('created', 'datetime')
-            ->add('updated', 'datetime')
-            ->add('deletedAt', 'datetime')
+            ->add('brochure', 'file', 
+                    array('label' => 'Brochure (PDF file)',
+                     'data_class' => null
+                    )
+                        )
+                
+            
         ;
     }
     
@@ -48,4 +54,10 @@ class ArticleType extends AbstractType
             'data_class' => 'GestionAdministrative\LgmBundle\Entity\Article'
         ));
     }
+    
+    public function getEquipe()
+    {
+        return 'article';
+    }
+    
 }

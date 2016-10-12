@@ -8,6 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    brochures_directory: '%kernel.root_dir%/../web/uploads/brochures'
    
 framework:
     #esi:             ~
@@ -126,15 +127,5 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
             
-            
-liip_imagine:
-    resolvers:
-        default:
-            web_path: ~
 
-    filter_sets:
-        cache: ~
-        my_thumb:
-            quality: 75
-            filters:
-                thumbnail: { size: [120, 90], mode: outbound }     
+            

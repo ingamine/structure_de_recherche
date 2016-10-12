@@ -2,11 +2,15 @@
 
 namespace GestionAdministrative\LgmBundle\Controller;
 
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use GestionAdministrative\LgmBundle\Entity\Article;
 use GestionAdministrative\LgmBundle\Form\ArticleType;
+
+use Symfony\Component\HttpFoundation\File\File;
+
 
 /**
  * Article controller.
@@ -41,6 +45,30 @@ class ArticleController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+         
+          
+             $file = $article->getBrochure();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('brochures_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $article->setBrochure($fileName);
+            
+        
+            
+        
+            
+            
+            
             $em->persist($article);
             $em->flush();
 
@@ -79,6 +107,28 @@ class ArticleController extends Controller
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            
+            $file = $article->getBrochure();
+
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('brochures_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $article->setBrochure($fileName);
+            
+            
+            
+            
+            
+            
             $em->persist($article);
             $em->flush();
 

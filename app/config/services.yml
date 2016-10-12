@@ -7,3 +7,13 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+     app.brochure_uploader:
+        class: GestionAdministrative\LgmBundle\FileUploader
+        arguments: ['%brochures_directory%']
+        
+     app.doctrine_brochure_listener:
+         class: GestionAdministrative\LgmBundle\Listener\BrochureUploadListener
+         arguments: ['@app.brochure_uploader']
+         tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
