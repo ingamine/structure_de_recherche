@@ -22,7 +22,7 @@ class BrochureUploadListener
     private $uploader;
 /*
    
- **Erreur si j'aoute les lignes ** 
+ **Erreur si j'aoute ces lignes ** 
  
    public function __construct(FileUploader $uploader)
     {
