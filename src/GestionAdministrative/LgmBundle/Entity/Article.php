@@ -34,11 +34,14 @@ class Article
     private $id;
     
     /**
-     * @var string
+     * 
+     * @ORM\ManyToOne(targetEntity="GestionAdministrative\LgmBundle\Entity\ResearchTeam")
+     * @ORM\JoinColumn(nullable=false)
      *
-     * @ORM\Column(name="equipe", type="string", length=255)
      */
-    private $equipe;
+    private $ResearchTeam;
+    
+    
 
     /**
      * @var string
@@ -110,7 +113,14 @@ class Article
      * @ORM\Column(name="a10", type="string", length=255)
      */
     private $a10;
-
+   
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="annee", type="date", nullable=true)
+     */
+    private $annee;
+    
     /**
      * @var string
      *
@@ -207,28 +217,7 @@ class Article
         return $this->id;
     }
 
-    /**
-     * Set equipe
-     *
-     * @param string $equipe
-     * @return Article
-     */
-    public function setEquipe($equipe)
-    {
-        $this->equipe = $equipe;
-
-        return $this;
-    }
-
-    /**
-     * Get equipe
-     *
-     * @return string 
-     */
-    public function getEquipe()
-    {
-        return $this->equipe;
-    }
+    
 
     /**
      * Set a1
@@ -675,4 +664,50 @@ class Article
     
     
     
+
+    /**
+     * Set annee
+     *
+     * @param \DateTime $annee
+     * @return Article
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return \DateTime 
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+
+    /**
+     * Set ResearchTeam
+     *
+     * @param string $researchTeam
+     * @return Article
+     */
+    public function setResearchTeam($researchTeam)
+    {
+        $this->ResearchTeam = $researchTeam;
+
+        return $this;
+    }
+
+    /**
+     * Get ResearchTeam
+     *
+     * @return string 
+     */
+    public function getResearchTeam()
+    {
+        return $this->ResearchTeam;
+    }
 }

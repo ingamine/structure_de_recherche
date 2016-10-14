@@ -30,7 +30,12 @@ class ResearchTeam
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
+  /**
+     * @var string
+     *
+     * @ORM\Column(name="membre", type="string", length=255, nullable=true))
+     */
+    private $membre;
     /**
      * @var integer
      *
@@ -187,6 +192,29 @@ class ResearchTeam
     
       public function __toString()
     {
-        return strval($this->id);
+       return $this->getName();
+    }
+
+    /**
+     * Set membre
+     *
+     * @param string $membre
+     * @return ResearchTeam
+     */
+    public function setMembre($membre)
+    {
+        $this->membre = $membre;
+
+        return $this;
+    }
+
+    /**
+     * Get membre
+     *
+     * @return string 
+     */
+    public function getMembre()
+    {
+        return $this->membre;
     }
 }

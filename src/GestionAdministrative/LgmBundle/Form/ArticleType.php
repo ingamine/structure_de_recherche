@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ArticleType extends AbstractType
 {
     /**
@@ -15,10 +17,13 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('equipe','choice', array('choices' => array('PM'=>'Physique des matériaux',
-                                                              'IM'=>'Ingénierie mécanique',
-                                                              'SM'=>'Systèmes Mécaniques',
-                                                              'CMS'=>'Comportement des Matériaux et des Structures', )))
+            ->add('researchTeam', 'entity', array(
+                            'class' => 'LgmBundle:ResearchTeam',
+                           'choice_label' => function ($ResearchTeam) {
+                            return $ResearchTeam->getName();
+                            }
+                            ))
+                                             
             ->add('a1')
             ->add('a2')
             ->add('a3')
@@ -29,6 +34,7 @@ class ArticleType extends AbstractType
             ->add('a8')
             ->add('a9')
             ->add('a10')
+            ->add('annee')
             ->add('journal')
             ->add('indx')
             ->add('vol')

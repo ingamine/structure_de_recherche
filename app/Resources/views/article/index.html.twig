@@ -72,7 +72,7 @@
         {% for article in articles %}
             <tr>
                 <td><a href="{{ path('article_show', { 'id': article.id }) }}"><i class="fa fa-anchor" aria-hidden="true"></i>  {{ article.id }}</a></td>
-                <td>{{ article.equipe }}</td>
+                <td>{{ article.ResearchTeam  }}</td>
                 <td>{{ article.a1 }}</td>
                 <td>{{ article.a2 }}</td>
                 <td>{{ article.a3 }}</td>

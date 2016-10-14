@@ -16,7 +16,9 @@ class ResearchTeamType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('membre')
             ->add('productionIndex')
+           
             
         ;
     }

@@ -1,9 +1,18 @@
 {% extends('::base.html.twig') %}
 
-{% block body %}
-    <h1>ResearchTeam</h1>
 
-    <table>
+
+
+{% block body %}
+    
+    
+    
+    <div class="responsive-table-line" style="border: 5px solid #ccc;
+         margin:0px auto;
+         max-width:800px;
+         border-collapse: collapse;">
+
+     <table class="table table-bordered table-body-center" >
         <tbody>
             <tr>
                 <th>Id</th>
@@ -18,28 +27,27 @@
                 <td>{{ researchTeam.productionIndex }}</td>
             </tr>
             <tr>
-                <th>Created</th>
-                <td>{% if researchTeam.created %}{{ researchTeam.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>membre</th>
+                <td>{{ researchTeam.membre }}</td>
             </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{% if researchTeam.updated %}{{ researchTeam.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+            
             
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('researchteam_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('researchteam_edit', { 'id': researchTeam.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+     <ul>
+        <a class="btn btn-warning btn-sm" href="{{ path('researchteam_edit', { 'id': researchTeam.id }) }}">
+            <i class="fa fa-cog"></i> Edit</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('researchteam_delete', { 'id': researchTeam.id }) }}">
+            <i class="fa fa-trash-o fa-lg"></i> Delete </a>
+        
+               
+        <a class="btn btn-primary" href="{{ path('researchteam_index') }}" aria-label="Skip to main navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        
+           
+            
     </ul>
+        </div>
 {% endblock %}
