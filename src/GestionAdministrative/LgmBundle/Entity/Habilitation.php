@@ -255,4 +255,59 @@ class Habilitation
        return $this->getTitle();
     }
     
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+    /**
+     * @var \GestionAdministrative\LgmBundle\Entity\Etablissement
+     */
+    private $etablissement;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $user
+     * @return Habilitation
+     */
+    public function addUser(\GestionAdministrative\LgmBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\User $user
+     */
+    public function removeUser(\GestionAdministrative\LgmBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

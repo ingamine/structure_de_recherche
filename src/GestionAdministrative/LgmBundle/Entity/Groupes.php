@@ -154,4 +154,10 @@ class Groupes
     {
         return $this->deletedAt;
     }
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+
 }

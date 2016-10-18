@@ -220,4 +220,64 @@ class Media
         return strval($this->id);
     }
 
+    /**
+     * @var string
+     */
+    private $filename;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+    /**
+     * @var \GestionAdministrative\LgmBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $productionscientifique;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->productionscientifique = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add productionscientifique
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionscientifique
+     * @return Media
+     */
+    public function addProductionscientifique(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionscientifique)
+    {
+        $this->productionscientifique[] = $productionscientifique;
+
+        return $this;
+    }
+
+    /**
+     * Remove productionscientifique
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionscientifique
+     */
+    public function removeProductionscientifique(\GestionAdministrative\LgmBundle\Entity\ProductionScientifique $productionscientifique)
+    {
+        $this->productionscientifique->removeElement($productionscientifique);
+    }
+
+    /**
+     * Get productionscientifique
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductionscientifique()
+    {
+        return $this->productionscientifique;
+    }
 }

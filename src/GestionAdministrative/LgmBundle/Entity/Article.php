@@ -173,6 +173,8 @@ class Article
     
     
 
+    
+    
     public function getBrochure()
     {
         return $this->brochure;
@@ -193,13 +195,13 @@ class Article
      */
     private $created;
 
-    /**
+     /**
      * @ORM\Column(type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
 
-    /**
+     /**
      * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
      */
     private $deletedAt;
@@ -710,4 +712,15 @@ class Article
     {
         return $this->ResearchTeam;
     }
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+    /**
+     * @var \GestionAdministrative\LgmBundle\Entity\ResearchTeam
+     */
+    private $researchteam;
+
+
 }

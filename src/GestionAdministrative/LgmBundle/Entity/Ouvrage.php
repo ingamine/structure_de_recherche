@@ -621,4 +621,20 @@ class Ouvrage
     {
         return $this->ISBN;
     }
+    /**
+     * @var string
+     */
+    private $website;
+
+    /**
+     * @var string
+     */
+    private $isbn;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+
 }
