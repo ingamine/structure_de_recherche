@@ -27,6 +27,7 @@
                                 <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="Name: activate to sort column ascending">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="membre: activate to sort column ascending">membre</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="productionIndex: activate to sort column ascending">productionIndex</th>
 
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
@@ -39,9 +40,15 @@
                                     <tr>
                                         <td><a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">#{{ researchTeam.id }}</a></td>
                                         <td>{{ researchTeam.name }}</td>
+                                        
+                                       
+                                        
+                                            <td>{{ researchTeam.membre }}</td>
+                                    
                                         <td>{{ researchTeam.productionIndex }}</td>
-                                        <td>{% if researchTeam.created %}{{ researchTeam.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                        <td>{% if researchTeam.updated %}{{ researchTeam.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        
+                                        
+                                        
 
                                         <td>
                                             <ul>
@@ -60,6 +67,7 @@
                                 <tr>
                                     <th rowspan="1" colspan="1">ID</th>
                                     <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">membre</th>
                                     <th rowspan="1" colspan="1">productionIndex</th>
                                     <th rowspan="1" colspan="1">Actions</th>
                                 </tr>

@@ -1,11 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends('::base.html.twig') %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $("#list").DataTable();
+        });
+    </script>
+{% endblock %}
 
 {% block body %}
-    <h1>Article list</h1>
+    <div class="box box-info box-solid">
+        <div class="box-header with-border">
+            <h3 class="box-title text-uppercase">Liste des Articles </h3>
+            <span class="pull-right">
+                <a href="{{ path('article_new') }}" class="btn btn-info text-uppercase"><i class="fa fa-plus"></i> Ajouter</a>
+            </span>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                       <table id="list"  class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                            <thead>
+                                <tr role="row">
+                
+                {#
                 <th>Id</th>
                 <th>Equipe</th>
                 <th>A1</th>
@@ -29,51 +50,91 @@
                 <th>Updated</th>
                 <th>Deletedat</th>
                 <th>Actions</th>
+                #}
+                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="equipe: activate to sort column ascending">Equipe</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a1: activate to sort column ascending">Auteur1</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a2: activate to sort column ascending">Auteur2</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a3: activate to sort column ascending">Auteur3</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a4: activate to sort column ascending">Auteur4</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a5: activate to sort column ascending">Auteur5</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a6: activate to sort column ascending">Auteur6</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="journal: activate to sort column ascending">Journal</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="titre: activate to sort column ascending">Titre</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="path: activate to sort column ascending">Article PDF</th>
+
+                                    
+
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;" aria-label="Actions: activate to sort column ascending">Action</th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td><a href="{{ path('article_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
-                <td>{{ article.equipe }}</td>
+                <td><a href="{{ path('article_show', { 'id': article.id }) }}"><i class="fa fa-anchor" aria-hidden="true"></i>  {{ article.id }}</a></td>
+                <td>{{ article.ResearchTeam  }}</td>
                 <td>{{ article.a1 }}</td>
                 <td>{{ article.a2 }}</td>
                 <td>{{ article.a3 }}</td>
                 <td>{{ article.a4 }}</td>
                 <td>{{ article.a5 }}</td>
                 <td>{{ article.a6 }}</td>
+                {#
                 <td>{{ article.a7 }}</td>
                 <td>{{ article.a8 }}</td>
                 <td>{{ article.a9 }}</td>
                 <td>{{ article.a10 }}</td>
-                <td>{{ article.journal }}</td>
+               
                 <td>{{ article.indx }}</td>
                 <td>{{ article.vol }}</td>
                 <td>{{ article.num }}</td>
                 <td>{{ article.pp }}</td>
+                 #}
+                <td>{{ article.journal }}</td>
                 <td>{{ article.titre }}</td>
-                <td>{{ article.path }}</td>
-                <td>{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if article.updated %}{{ article.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if article.deletedAt %}{{ article.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ article.brochure }}</td>
+                
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('article_show', { 'id': article.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('article_edit', { 'id': article.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="{{ path('article_show', { 'id': article.id }) }}"><i class="fa fa-eye" aria-hidden="true"></i> Show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('article_edit', { 'id': article.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                </li>
+                                                <li>
+                                                <a href="{{ asset('uploads/brochures/' ~ article.brochure) }}"><i class="fa fa-file-pdf-o"></i>Télècharger</a>
+                                                </li>
+                                            </ul>
+                                        </td>
             </tr>
         {% endfor %}
         </tbody>
+        <tfoot>
+                                <tr>
+                                    
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">equipe</th>
+                                    <th rowspan="1" colspan="1">a1</th>
+                                    <th rowspan="1" colspan="1">a2</th>
+                                    <th rowspan="1" colspan="1">a3</th>
+                                    <th rowspan="1" colspan="1">a4</th>
+                                    <th rowspan="1" colspan="1">a5</th>
+                                    <th rowspan="1" colspan="1">a6</th>
+                                    <th rowspan="1" colspan="1">journal</th>
+                                    <th rowspan="1" colspan="1">titre</th>
+                                    <th rowspan="1" colspan="1">Article PDF</th>
+
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </tfoot>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('article_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -125,4 +125,18 @@ class ResearchTeamController extends Controller
             ->getForm()
         ;
     }
+    
+    public function listAction(){
+
+    $manageur = $this->getDoctrine()->getManager();
+
+    $listEntite = $manageur->getRepository("LgmBundle:Entite")->findAll();
+
+    return $this->render(":researchteam:index.html.twig",array("liste"=>$listEntite));
+}
+    
+    
+    
+    
+    
 }

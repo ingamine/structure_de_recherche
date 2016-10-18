@@ -1,9 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends('::base.html.twig') %}
+
+
+
 
 {% block body %}
-    <h1>Article</h1>
+    
+    
+    
+    <div class="responsive-table-line" style="border: 5px solid #ccc;
+         margin:0px auto;
+         max-width:800px;
+         border-collapse: collapse;">
 
-    <table>
+     <table class="table table-bordered table-body-center" >
         <tbody>
             <tr>
                 <th>Id</th>
@@ -11,7 +20,7 @@
             </tr>
             <tr>
                 <th>Equipe</th>
-                <td>{{ article.equipe }}</td>
+                <td>{{ article.researchTeam.name }}</td>
             </tr>
             <tr>
                 <th>A1</th>
@@ -37,6 +46,7 @@
                 <th>A6</th>
                 <td>{{ article.a6 }}</td>
             </tr>
+             {#
             <tr>
                 <th>A7</th>
                 <td>{{ article.a7 }}</td>
@@ -53,6 +63,7 @@
                 <th>A10</th>
                 <td>{{ article.a10 }}</td>
             </tr>
+            
             <tr>
                 <th>Journal</th>
                 <td>{{ article.journal }}</td>
@@ -73,14 +84,20 @@
                 <th>Pp</th>
                 <td>{{ article.pp }}</td>
             </tr>
+             #}
+             <tr>
+                <th>Journal</th>
+                <td>{{ article.journal }}</td>
+            </tr>
             <tr>
                 <th>Titre</th>
                 <td>{{ article.titre }}</td>
             </tr>
             <tr>
-                <th>Path</th>
-                <td>{{ article.path }}</td>
+                <th>Article PDF</th>
+                <td>{{ article.brochure }}</td>
             </tr>
+             {#
             <tr>
                 <th>Created</th>
                 <td>{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -93,20 +110,30 @@
                 <th>Deletedat</th>
                 <td>{% if article.deletedAt %}{{ article.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+             #}
+            
+             
+            
         </tbody>
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('article_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        <a class="btn btn-warning btn-sm" href="{{ path('article_edit', { 'id': article.id }) }}">
+            <i class="fa fa-cog"></i> Edit</a>
+        <a class="btn btn-danger btn-sm" href="{{ path('article_delete', { 'id': article.id }) }}">
+            <i class="fa fa-trash-o fa-lg"></i> Delete </a>
+        
+               
+        <a class="btn btn-primary" href="{{ path('article_index') }}" aria-label="Skip to main navigation">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
+        
+           
+            
     </ul>
+           
+        </div>
+        
+
+
 {% endblock %}

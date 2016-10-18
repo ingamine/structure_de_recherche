@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class ArticleType extends AbstractType
 {
     /**
@@ -15,7 +17,13 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('equipe')
+            ->add('researchTeam', 'entity', array(
+                            'class' => 'LgmBundle:ResearchTeam',
+                           'choice_label' => function ($ResearchTeam) {
+                            return $ResearchTeam->getName();
+                            }
+                            ))
+                                             
             ->add('a1')
             ->add('a2')
             ->add('a3')
@@ -26,16 +34,20 @@ class ArticleType extends AbstractType
             ->add('a8')
             ->add('a9')
             ->add('a10')
+            ->add('annee')
             ->add('journal')
             ->add('indx')
             ->add('vol')
             ->add('num')
             ->add('pp')
             ->add('titre')
-            ->add('path')
-            ->add('created', 'datetime')
-            ->add('updated', 'datetime')
-            ->add('deletedAt', 'datetime')
+            ->add('brochure', 'file', 
+                    array('label' => 'Brochure (PDF file)',
+                     'data_class' => null
+                    )
+                        )
+                
+            
         ;
     }
     
@@ -48,4 +60,10 @@ class ArticleType extends AbstractType
             'data_class' => 'GestionAdministrative\LgmBundle\Entity\Article'
         ));
     }
+    
+    public function getEquipe()
+    {
+        return 'article';
+    }
+    
 }

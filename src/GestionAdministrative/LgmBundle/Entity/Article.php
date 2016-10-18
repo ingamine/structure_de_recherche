@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
- * User
+ * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\ArticleRepository")
@@ -34,11 +34,14 @@ class Article
     private $id;
     
     /**
-     * @var string
+     * 
+     * @ORM\ManyToOne(targetEntity="GestionAdministrative\LgmBundle\Entity\ResearchTeam")
+     * @ORM\JoinColumn(nullable=false)
      *
-     * @ORM\Column(name="equipe", type="string", length=255)
      */
-    private $equipe;
+    private $ResearchTeam;
+    
+    
 
     /**
      * @var string
@@ -110,7 +113,14 @@ class Article
      * @ORM\Column(name="a10", type="string", length=255)
      */
     private $a10;
-
+   
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="annee", type="date", nullable=true)
+     */
+    private $annee;
+    
     /**
      * @var string
      *
@@ -153,12 +163,27 @@ class Article
      */
     private $titre;
 
-    /**
-     * @var string
+  /**
+     * @ORM\Column(type="string")
      *
-     * @ORM\Column(name="path", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
      */
-    private $path;
+    private $brochure;
+    
+    
+
+    public function getBrochure()
+    {
+        return $this->brochure;
+    }
+
+    public function setBrochure($brochure)
+    {
+        $this->brochure = $brochure;
+
+        return $this;
+    }
 
 
     
@@ -192,28 +217,7 @@ class Article
         return $this->id;
     }
 
-    /**
-     * Set equipe
-     *
-     * @param string $equipe
-     * @return Article
-     */
-    public function setEquipe($equipe)
-    {
-        $this->equipe = $equipe;
-
-        return $this;
-    }
-
-    /**
-     * Get equipe
-     *
-     * @return string 
-     */
-    public function getEquipe()
-    {
-        return $this->equipe;
-    }
+    
 
     /**
      * Set a1
@@ -586,28 +590,7 @@ class Article
         return $this->titre;
     }
 
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Article
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
+   
 
     /**
      * Set created
@@ -676,5 +659,55 @@ class Article
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    
+    
+    
+
+    /**
+     * Set annee
+     *
+     * @param \DateTime $annee
+     * @return Article
+     */
+    public function setAnnee($annee)
+    {
+        $this->annee = $annee;
+
+        return $this;
+    }
+
+    /**
+     * Get annee
+     *
+     * @return \DateTime 
+     */
+    public function getAnnee()
+    {
+        return $this->annee;
+    }
+
+    /**
+     * Set ResearchTeam
+     *
+     * @param string $researchTeam
+     * @return Article
+     */
+    public function setResearchTeam($researchTeam)
+    {
+        $this->ResearchTeam = $researchTeam;
+
+        return $this;
+    }
+
+    /**
+     * Get ResearchTeam
+     *
+     * @return string 
+     */
+    public function getResearchTeam()
+    {
+        return $this->ResearchTeam;
     }
 }

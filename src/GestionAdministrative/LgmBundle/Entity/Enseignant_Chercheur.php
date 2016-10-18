@@ -147,6 +147,18 @@ class Enseignant_Chercheur
 
     
     
+   
+    
+    
+     /** 
+      * @ORM\ManyToOne(targetEntity="ResearchTeam", inversedBy="Enseignant_Chercheur") 
+      * 
+      */
+    private $team;
+    
+    
+    
+    
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
@@ -738,5 +750,29 @@ class Enseignant_Chercheur
     public function getEncadreur()
     {
         return $this->encadreur;
+    }
+
+
+    /**
+     * Set team
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ResearchTeam $team
+     * @return Enseignant_Chercheur
+     */
+    public function setTeam(\GestionAdministrative\LgmBundle\Entity\ResearchTeam $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\ResearchTeam 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

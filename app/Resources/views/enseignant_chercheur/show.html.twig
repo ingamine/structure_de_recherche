@@ -81,8 +81,8 @@
                 <td>{{ enseignant_Chercheur.codeStructure }}</td>
             </tr>
             <tr>
-                <th>Created</th>
-                <td>{% if enseignant_Chercheur.created %}{{ enseignant_Chercheur.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Groupe</th>
+                <td>{{ enseignant_Chercheur.team }}</td>
             </tr>
             <tr>
                 <th>Updated</th>
@@ -96,13 +96,13 @@
     </table>
 
     <ul>
-        <a class="btn btn-warning btn-sm" href="{{ path('enseignant_Chercheur_edit', { 'id': user.id }) }}">
+        <a class="btn btn-warning btn-sm" href="{{ path('enseignant_chercheur_edit', { 'id': enseignant_Chercheur.id }) }}">
             <i class="fa fa-cog"></i> Edit</a>
-        <a class="btn btn-danger btn-sm" href="{{ path('enseignant_Chercheur_delete', { 'id': user.id }) }}">
+        <a class="btn btn-danger btn-sm" href="{{ path('enseignant_chercheur_delete', { 'id': enseignant_Chercheur.id }) }}">
             <i class="fa fa-trash-o fa-lg"></i> Delete </a>
         
                
-        <a class="btn btn-primary" href="{{ path('enseignant_Chercheur_index') }}" aria-label="Skip to main navigation">
+        <a class="btn btn-primary" href="{{ path('enseignant_chercheur_index') }}" aria-label="Skip to main navigation">
             <i class="fa fa-bars" aria-hidden="true"></i>
         </a>
         
