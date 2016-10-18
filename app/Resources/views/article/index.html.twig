@@ -52,15 +52,15 @@
                 <th>Actions</th>
                 #}
                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 246px;" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="equipe: activate to sort column ascending">equipe</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a1: activate to sort column ascending">a1</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a2: activate to sort column ascending">a2</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a3: activate to sort column ascending">a3</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a4: activate to sort column ascending">a4</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a5: activate to sort column ascending">a5</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a6: activate to sort column ascending">a6</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="journal: activate to sort column ascending">journal</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="titre: activate to sort column ascending">titre</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="equipe: activate to sort column ascending">Equipe</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a1: activate to sort column ascending">Auteur1</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a2: activate to sort column ascending">Auteur2</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a3: activate to sort column ascending">Auteur3</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a4: activate to sort column ascending">Auteur4</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a5: activate to sort column ascending">Auteur5</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 301px;" aria-label="a6: activate to sort column ascending">Auteur6</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 268px;" aria-label="journal: activate to sort column ascending">Journal</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="titre: activate to sort column ascending">Titre</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 212px;" aria-label="path: activate to sort column ascending">Article PDF</th>
 
                                     
@@ -103,7 +103,7 @@
                                                     <a href="{{ path('article_edit', { 'id': article.id }) }}"><i class="fa fa-pencil"></i> Modifier</a>
                                                 </li>
                                                 <li>
-                                                <a href="{{ asset('uploads/brochures/' ~ article.brochure) }}">View brochure (PDF)</a>
+                                                <a href="{{ asset('uploads/brochures/' ~ article.brochure) }}"><i class="fa fa-file-pdf-o"></i>Télècharger</a>
                                                 </li>
                                             </ul>
                                         </td>

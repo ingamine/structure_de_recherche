@@ -16,7 +16,12 @@ class ResearchTeamType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('membre')
+            ->add('membre', 'entity', array(
+                            'class' => 'LgmBundle:Enseignant_Chercheur',
+                           'choice_label' => function ($Enseignant_Chercheur) {
+                            return $Enseignant_Chercheur->getNom();
+                            }
+                            ))
             ->add('productionIndex')
            
             

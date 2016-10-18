@@ -24,17 +24,30 @@ class Enseignant_ChercheurType extends AbstractType
             ->add('nomJeuneFille')
             ->add('dateNaiss', 'date')
             ->add('lieuNaiss')
-            ->add('sexe')
-            ->add('grade')
+            ->add('sexe', 'choice', array('choices' => array('Masculin'=>'Masculin',
+                                                             'Féminin'=>'Féminin'  )))
+            ->add('grade', 'choice', array('choices' => array('Professeur'=>'Professeur',
+                                                              'Maitre de Conférence'=>'Maitre de Conférence',
+                                                              'Maitre Assistant'=>'Maitre Assistant',
+                                                              'Assistant'=>'Assistant')))
             ->add('etablisement')
             ->add('fonction')
             ->add('telMob')
             ->add('telFixe')
             ->add('eMail')
-            ->add('dernierDepObtenu')
+            ->add('dernierDepObtenu','choice', array('choices' => array('Habilitation'=>'Habilitation',
+                                                                        'Doctorat'=>'Doctorat',
+                                                                        'Agrégation'=>'Agrégation',
+                                                                        'DEA'=>'DEA')))
             ->add('dateDepObtenu', 'date')
             ->add('etabDepObtenu')
             ->add('codeStructure')
+            ->add('team', 'entity', array(
+                            'class' => 'LgmBundle:ResearchTeam',
+                           'choice_label' => function ($ResearchTeam) {
+                            return $ResearchTeam->getName();
+                            }
+                            ))
             
         ;
     }

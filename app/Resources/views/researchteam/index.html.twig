@@ -40,8 +40,13 @@
                                     <tr>
                                         <td><a href="{{ path('researchteam_show', { 'id': researchTeam.id }) }}">#{{ researchTeam.id }}</a></td>
                                         <td>{{ researchTeam.name }}</td>
+                                        
+                                       
+                                        
+                                            <td>{{ researchTeam.membre }}</td>
+                                    
                                         <td>{{ researchTeam.productionIndex }}</td>
-                                        <td>{{ researchTeam.membre }}</td>
+                                        
                                         
                                         
 
@@ -62,8 +67,8 @@
                                 <tr>
                                     <th rowspan="1" colspan="1">ID</th>
                                     <th rowspan="1" colspan="1">Name</th>
-                                    <th rowspan="1" colspan="1">Name</th>
                                     <th rowspan="1" colspan="1">membre</th>
+                                    <th rowspan="1" colspan="1">productionIndex</th>
                                     <th rowspan="1" colspan="1">Actions</th>
                                 </tr>
                             </tfoot>
