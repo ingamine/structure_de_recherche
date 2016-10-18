@@ -651,4 +651,27 @@ class Ouvrage
     private $deletedat;
 
 
+
+    /**
+     * Set ResearchTeam
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ResearchTeam $researchTeam
+     * @return Ouvrage
+     */
+    public function setResearchTeam(\GestionAdministrative\LgmBundle\Entity\ResearchTeam $researchTeam)
+    {
+        $this->ResearchTeam = $researchTeam;
+
+        return $this;
+    }
+
+    /**
+     * Get ResearchTeam
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\ResearchTeam 
+     */
+    public function getResearchTeam()
+    {
+        return $this->ResearchTeam;
+    }
 }

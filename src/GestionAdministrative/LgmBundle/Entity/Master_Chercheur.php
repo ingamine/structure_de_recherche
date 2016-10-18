@@ -529,4 +529,86 @@ class Master_Chercheur
     {
         return $this->etabDepObtenu;
     }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Master_Chercheur
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Master_Chercheur
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set encadreur
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur
+     * @return Master_Chercheur
+     */
+    public function setEncadreur(\GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur = null)
+    {
+        $this->encadreur = $encadreur;
+
+        return $this;
+    }
+
+    /**
+     * Get encadreur
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur 
+     */
+    public function getEncadreur()
+    {
+        return $this->encadreur;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ResearchTeam $team
+     * @return Master_Chercheur
+     */
+    public function setTeam(\GestionAdministrative\LgmBundle\Entity\ResearchTeam $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\ResearchTeam 
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
 }

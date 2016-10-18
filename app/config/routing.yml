@@ -1,7 +1,6 @@
-lgm_cadre.equivalant:
-    resource: "@LgmBundle/Controller/Cadre_equivalantController.php"
-    type:     annotation
-
+lgm_master_chercheur:
+        resource: "@LgmBundle/Resources/config/routing/master_chercheur.yml"
+        prefix:   /master_chercheur
 lgm:
     resource: "@LgmBundle/Resources/config/routing.yml"
     prefix:   /

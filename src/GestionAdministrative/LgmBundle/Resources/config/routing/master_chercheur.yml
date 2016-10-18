@@ -1,0 +1,24 @@
+master_chercheur_index:
+    path:     /
+    defaults: { _controller: "LgmBundle:Master_Chercheur:index" }
+    methods:  GET
+
+master_chercheur_show:
+    path:     /{id}/show
+    defaults: { _controller: "LgmBundle:Master_Chercheur:show" }
+    methods:  GET
+
+master_chercheur_new:
+    path:     /new
+    defaults: { _controller: "LgmBundle:Master_Chercheur:new" }
+    methods:  [GET, POST]
+
+master_chercheur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LgmBundle:Master_Chercheur:edit" }
+    methods:  [GET, POST]
+
+master_chercheur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LgmBundle:Master_Chercheur:delete" }
+    methods:  DELETE
