@@ -182,6 +182,20 @@ class Communication
     
     
     
+     /**
+     * 
+     * @ORM\ManyToOne(targetEntity="GestionAdministrative\LgmBundle\Entity\ResearchTeam")
+     * @ORM\JoinColumn(nullable=false)
+     *
+     */
+    private $ResearchTeam;
+    
+    
+    
+    
+    
+    
+    
     /**
      * Get id
      *
