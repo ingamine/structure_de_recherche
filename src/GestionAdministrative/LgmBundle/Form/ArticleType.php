@@ -24,8 +24,18 @@ class ArticleType extends AbstractType
                             }
                             ))
                                              
-            ->add('a1')
-            ->add('a2')
+            ->add('a1','entity', array(
+                            'class' => 'LgmBundle:Enseignant_Chercheur',
+                           'choice_label' => function ($Enseignant_Chercheur) {
+                            return $Enseignant_Chercheur->getNom();
+                            }
+                            ))
+            ->add('a2','entity', array(
+                            'class' => 'LgmBundle:Doctorant',
+                           'choice_label' => function ($Doctorant) {
+                            return $Doctorant->getNom();
+                            }
+                            ))
             ->add('a3')
             ->add('a4')
             ->add('a5')

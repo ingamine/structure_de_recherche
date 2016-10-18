@@ -224,7 +224,12 @@ class Enseignant_Chercheur
     }
     
     
-    
+    public function __toString()
+    {
+      
+        return $this->getNom();
+        
+    }
     
 
     /**
@@ -666,12 +671,7 @@ class Enseignant_Chercheur
 
    
     
-    public function __toString()
-    {
-        return strval($this->id);
-    }
-    
-    
+   
 
     /**
      * Set doctorants

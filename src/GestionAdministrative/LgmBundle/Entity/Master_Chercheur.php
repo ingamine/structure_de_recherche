@@ -2,6 +2,8 @@
 
 namespace GestionAdministrative\LgmBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="master__chercheur")
  * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\Master_ChercheurRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Master_Chercheur
 {
@@ -120,6 +123,79 @@ class Master_Chercheur
     private $etabDepObtenu;
 
 
+     /** 
+      * @ORM\ManyToOne(targetEntity="Enseignant_Chercheur", inversedBy="master__chercheur") 
+      * 
+      */
+    private $encadreur;
+    
+    /** 
+      * @ORM\ManyToOne(targetEntity="ResearchTeam", inversedBy="Enseignant_Chercheur") 
+      * 
+      */
+    private $team;
+    
+    
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
+
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+    
+    
+      
+    
+    
+    
+   /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+ 
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param string $deletedAt
+     * @return User
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+    
+    
+    
+    
+    
     /**
      * Get id
      *
@@ -452,5 +528,87 @@ class Master_Chercheur
     public function getEtabDepObtenu()
     {
         return $this->etabDepObtenu;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Master_Chercheur
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Master_Chercheur
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set encadreur
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur
+     * @return Master_Chercheur
+     */
+    public function setEncadreur(\GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur $encadreur = null)
+    {
+        $this->encadreur = $encadreur;
+
+        return $this;
+    }
+
+    /**
+     * Get encadreur
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\Enseignant_Chercheur 
+     */
+    public function getEncadreur()
+    {
+        return $this->encadreur;
+    }
+
+    /**
+     * Set team
+     *
+     * @param \GestionAdministrative\LgmBundle\Entity\ResearchTeam $team
+     * @return Master_Chercheur
+     */
+    public function setTeam(\GestionAdministrative\LgmBundle\Entity\ResearchTeam $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return \GestionAdministrative\LgmBundle\Entity\ResearchTeam 
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

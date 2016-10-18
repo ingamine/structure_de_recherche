@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Master_Chercheur list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Grade</th>
+                <th>Cinmaster</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Codestructure</th>
+                <th>Etab</th>
+                <th>Date_naissance</th>
+                <th>Lieu_naissance</th>
+                <th>Tel_mob</th>
+                <th>Tel_fixe</th>
+                <th>E_mail</th>
+                <th>Dernier_diplome_obtenu</th>
+                <th>Date_dernier_dip_obtenu</th>
+                <th>Etabdepobtenu</th>
+                
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for master_Chercheur in master_Chercheurs %}
+            <tr>
+                <td><a href="{{ path('master_chercheur_show', { 'id': master_Chercheur.id }) }}">{{ master_Chercheur.id }}</a></td>
+                <td>{{ master_Chercheur.grade }}</td>
+                <td>{{ master_Chercheur.cINMaster }}</td>
+                <td>{{ master_Chercheur.nom }}</td>
+                <td>{{ master_Chercheur.prenom }}</td>
+                <td>{{ master_Chercheur.codeStructure }}</td>
+                <td>{{ master_Chercheur.etab }}</td>
+                <td>{% if master_Chercheur.datenaissance %}{{ master_Chercheur.datenaissance|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ master_Chercheur.lieunaissance }}</td>
+                <td>{{ master_Chercheur.telmob }}</td>
+                <td>{{ master_Chercheur.telfixe }}</td>
+                <td>{{ master_Chercheur.email }}</td>
+                <td>{{ master_Chercheur.dernierdiplomeobtenu }}</td>
+                <td>{% if master_Chercheur.datedernierdipobtenu %}{{ master_Chercheur.datedernierdipobtenu|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ master_Chercheur.etabDepObtenu }}</td>
+                
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('master_chercheur_show', { 'id': master_Chercheur.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('master_chercheur_edit', { 'id': master_Chercheur.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('master_chercheur_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

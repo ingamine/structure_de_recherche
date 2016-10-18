@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Master_Chercheur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ master_Chercheur.id }}</td>
+            </tr>
+            <tr>
+                <th>Grade</th>
+                <td>{{ master_Chercheur.grade }}</td>
+            </tr>
+            <tr>
+                <th>Cinmaster</th>
+                <td>{{ master_Chercheur.cINMaster }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ master_Chercheur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ master_Chercheur.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Codestructure</th>
+                <td>{{ master_Chercheur.codeStructure }}</td>
+            </tr>
+            <tr>
+                <th>Etab</th>
+                <td>{{ master_Chercheur.etab }}</td>
+            </tr>
+            <tr>
+                <th>Date_naissance</th>
+                <td>{% if master_Chercheur.datenaissance %}{{ master_Chercheur.datenaissance|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lieu_naissance</th>
+                <td>{{ master_Chercheur.lieunaissance }}</td>
+            </tr>
+            <tr>
+                <th>Tel_mob</th>
+                <td>{{ master_Chercheur.telmob }}</td>
+            </tr>
+            <tr>
+                <th>Tel_fixe</th>
+                <td>{{ master_Chercheur.telfixe }}</td>
+            </tr>
+            <tr>
+                <th>E_mail</th>
+                <td>{{ master_Chercheur.email }}</td>
+            </tr>
+            <tr>
+                <th>Dernier_diplome_obtenu</th>
+                <td>{{ master_Chercheur.dernierdiplomeobtenu }}</td>
+            </tr>
+            <tr>
+                <th>Date_dernier_dip_obtenu</th>
+                <td>{% if master_Chercheur.datedernierdipobtenu %}{{ master_Chercheur.datedernierdipobtenu|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etabdepobtenu</th>
+                <td>{{ master_Chercheur.etabDepObtenu }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if master_Chercheur.created %}{{ master_Chercheur.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if master_Chercheur.updated %}{{ master_Chercheur.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if master_Chercheur.deletedAt %}{{ master_Chercheur.deletedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('master_chercheur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('master_chercheur_edit', { 'id': master_Chercheur.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

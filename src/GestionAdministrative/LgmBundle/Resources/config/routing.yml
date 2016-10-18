@@ -49,4 +49,9 @@ lgm_ouvrage:
 lgm_homepage:
     path:     /
     defaults: { _controller: LgmBundle:Default:index }
-
+lgm_master_chercheur:
+        resource: "@LgmBundle/Resources/config/routing/master_chercheur.yml"
+        prefix:   /master_chercheur
+lgm_bilan:
+    path:     /bilan
+    defaults: { _controller: LgmBundle:Bilan:bilan }

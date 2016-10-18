@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Listener/BrochureUploadListener.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Form/Enseignant_ChercheurType.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Entity/ResearchTeam.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Entity/Enseignant_Chercheur.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Controller/ResearchTeamController.php</file>
             <file>file:/C:/wamp/www/structure_de_recherche/app/Resources/views/article/new.html.twig</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/app/Resources/views/article/index.html.twig</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/FileUploader.php</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/app/Resources/views/article/show.html.twig</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Controller/ArticleController.php</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Entity/Article.php</file>
-            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Form/ArticleType.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Resources/config/routing/enseignant_chercheur.yml</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Form/ResearchTeamType.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/app/Resources/views/researchteam/index.html.twig</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/app/Resources/views/enseignant_chercheur/show.html.twig</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Entity/Doctorant.php</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/web/public/bootstrap/css/bootstrap.css</file>
+            <file>file:/C:/wamp/www/structure_de_recherche/src/GestionAdministrative/LgmBundle/Form/UserType.php</file>
         </group>
     </open-files>
 </project-private>
