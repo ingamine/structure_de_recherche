@@ -679,4 +679,10 @@ class Communication
     {
         return $this->pays;
     }
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+
 }

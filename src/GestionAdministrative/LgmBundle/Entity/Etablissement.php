@@ -145,4 +145,10 @@ class Etablissement
     {
          return $this->getName();
     }
+    /**
+     * @var \DateTime
+     */
+    private $deletedat;
+
+
 }
