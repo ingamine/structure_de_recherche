@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 
+use FOS\UserBundle\Model\User as BaseUser;
+
 /**
  * Doctorant
  *
@@ -13,7 +15,12 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
  * @ORM\Entity(repositoryClass="GestionAdministrative\LgmBundle\Repository\DoctorantRepository")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
-class Doctorant
+
+
+
+
+
+class Doctorant extends BaseUser
 {
     /**
      * @var int
@@ -22,144 +29,144 @@ class Doctorant
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected  $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="grade", type="string", length=255)
      */
-    private $grade;
+    protected  $grade;
    /**
      * @var int
      * 
      * @ORM\Column(name="cINDoctorant", type="integer", nullable=false)
      */
-    private $cINDoctorant;
+    protected  $cINDoctorant;
 
     /**
      * @ORM\Column(name="nom", type="string", nullable=false)
      */
-    private $nom;
+    protected  $nom;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="prenom", type="string", nullable=true)
      */
-    private $prenom;
+    protected  $prenom;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="nomJeuneFille", type="string", nullable=true)
      */
-    private $nomJeuneFille;
+    protected  $nomJeuneFille;
 
     /**
      * @var string $dateNaiss
      *
      * @ORM\Column(name="dateNaiss", type="date", nullable=true)
      */
-    private $dateNaiss;
+    protected  $dateNaiss;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="lieuNaiss", type="string", nullable=true)
      */
-    private $lieuNaiss;
+    protected  $lieuNaiss;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="sexe", type="string", nullable=true)
      */
-    private $sexe;
+    protected  $sexe;
 
     /**
      * @var int
      * 
      * @ORM\Column(name="telMob", type="integer", nullable=true)
      */
-    private $telMob;
+    protected  $telMob;
 
     /**
      * @var int
      * 
      *@ORM\Column(name="telFixe", type="integer", nullable=true)
      */
-    private $telFixe;
+    protected  $telFixe;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="eMail", type="string", nullable=true)
      */
-    private $eMail;
+    protected  $eMail;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="dernierDepObtenu", type="string", nullable=true)
      */
-    private $dernierDepObtenu;
+    protected  $dernierDepObtenu;
 
     /**
      * @var \DateTime
      * 
      * @ORM\Column(name="dateDepObtenu", type="date", nullable=true)
      */
-    private $dateDepObtenu;
+    protected  $dateDepObtenu;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="etabDepObtenu", type="string", nullable=true)
      */
-    private $etabDepObtenu;
+    protected  $etabDepObtenu;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="codeStructure", type="string", nullable=true)
      */
-    private $codeStructure;
+    protected  $codeStructure;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="intituleSujet", type="string", nullable=true)
      */
-    private $intituleSujet;
+    protected  $intituleSujet;
 
     /**
      * @var int
      * 
      * @ORM\Column(name="tauxAvancement", type="integer", nullable=true)
      */
-    private $tauxAvancement;
+    protected  $tauxAvancement;
 
     /**
      * @var \DateTime
      * 
      * @ORM\Column(name="anneePremierInscrip", type="date", nullable=true)
      */
-    private $anneePremierInscrip;
+    protected  $anneePremierInscrip;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="etbInscrip", type="string", nullable=true)
      */
-    private $etbInscrip;
+    protected  $etbInscrip;
 
     /**
      * @var string
      * 
      * @ORM\Column(name="etabInscrip2", type="string", nullable=true)
      */
-    private $etabInscrip2;
+    protected  $etabInscrip2;
 
     
    /**
